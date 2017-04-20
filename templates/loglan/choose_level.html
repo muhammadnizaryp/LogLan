@@ -1,0 +1,35 @@
+{% extends 'loglan/header_footer.html' %}
+
+{% block content %}
+<div class="container">
+
+    <div class="col-md-2"></div>
+
+    {% for course in courses %}
+    <div class="col-md-4 col-sm-4 col-xs-12">
+      <div class="panel panel-default yoga-panel">
+        <div class="panel-body">
+          <form method="POST" action="#">
+            <div class="form-group text-center">
+              <h3 class=yoga-panel-title>{{ course.course_name }}</h3>
+            </div>
+            <div class="form-group text-center">
+              <!-- kasih if kalau pernah ngerjain, mulai dari id terakhir dia ngerjain-->
+              {% with course.course_parts.all|first as first_part %}
+                <a href="{% url 'loglan:course_part_detail' course_slug=course.course_slug id_part_course=first_part.id %}" type="submit" name="course" class="btn btn-default yoga-button-transparent">Materi</a>
+              {% endwith %}
+            </div>
+            <div class="form-group text-center">
+              {% with course.quiz.quiz_parts.all|first as first_part %}
+                <a href="{% url 'loglan:quiz_part_detail' course_slug=course.course_slug id_part_quiz=first_part.id %}" type="submit" name="quiz" class="btn btn-default yoga-button-transparent">Kuis</a>
+              {% endwith %}
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+    <div class="col-md-2"></div>
+</div>
+{% endblock %}

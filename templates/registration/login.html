@@ -1,0 +1,44 @@
+{% extends 'loglan/header_footer.html' %}
+
+{% block content %}
+<script>
+  {% if user.is_authenticated %}
+    window.location = "{% url 'loglan:user_main_page' %}";
+  {% endif %}
+</script>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-4"></div>
+
+    <div class="col-md-4 col-sm-4 col-xs-12">
+      <div class="panel panel-default yoga-panel">
+        <div class="panel-body">
+          <form action="" method="POST">{% csrf_token %}
+            <div class="form-group text-center">
+              <h3 class=yoga-panel-title>Log-Lan</h3>
+              {{ form.non_field_errors }}
+            </div>
+            <div class="form-group">
+              {% for field in form %}
+              {{ field.label_tag}}
+              {{ field }}
+              {% endfor %}
+            </div>
+            <div class="form-group text-center">
+              <button type="submit" name="login" class="btn btn-default yoga-button-transparent">Masuk</button>
+            </div>
+            <div class="form-group text-center yoga-text-white">
+              <a href="" id="yoga-lupa-kata-sandi">Lupa kata sandi ?</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4"></div>
+
+  </div>
+</div>
+{% endblock %}

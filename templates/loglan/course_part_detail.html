@@ -1,0 +1,108 @@
+{% extends 'loglan/header_footer.html' %}
+{% block content %}
+
+<script type="text/javascript">
+// output functions are configurable.  This one just appends some text
+// to a pre element.
+function outf(text) {
+  var mypre = document.getElementById("output");
+  mypre.innerHTML = mypre.innerHTML + text;
+}
+
+function builtinRead(x) {
+  if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
+  throw "File not found: '" + x + "'";
+  return Sk.builtinFiles["files"][x];
+}
+
+// Here's everything you need to run a python program in skulpt
+// grab the code from your textarea
+// get a reference to your pre element for output
+// configure the output function
+// call Sk.importMainWithBody()
+function runit() {
+  var prog = document.getElementById("yourcode").value;
+  var mypre = document.getElementById("output");
+  mypre.innerHTML = '';
+  Sk.pre = "output";
+  Sk.configure({output:outf, read:builtinRead});
+  var myPromise = Sk.misceval.asyncToPromise(function() {
+    return Sk.importMainWithBody("<stdin>", false, prog, true);
+  });
+  myPromise.then(function(mod) {
+    console.log('success');
+  },
+  function(err) {
+    console.log(err.toString());
+  });
+}
+</script>
+
+<div class="container-fluid">
+
+  <div class="row" id="yoga-row-pertama-course" >
+    <div class="col-md-6" id="yoga-padding-menu-course">
+      <a href="#" class="fa fa-keyboard-o" id="yoga-menu-course"> Belajar</a>
+      <a href="{% url 'loglan:course_part_list' course_slug=course_part.course.course_slug %}" class="fa fa-list" id="yoga-menu-course"> Daftar Materi</a>
+    </div>
+    <div class="col-md-6 text-right">
+      <h4>+10 point</h4>
+    </div>
+  </div>
+
+  <div class="row" id="yoga-row-kedua-course">
+    <div class="col-md-12" id="">
+      <div class="progress"> <!-- Bootstrap Progress Bar -->
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">
+          50% Complete
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-6 text-left">
+      <textarea cols="90" rows="33">{{ course_part.content }}</textarea>
+    </div>
+
+    <div class="col-md-6">
+      <div class="text-right">
+        <textarea cols="90" rows="15" id="yourcode"></textarea>
+        <button type="button" onclick="runit()" class="btn btn-primary" id="yoga-button-course">Jalankan</button>
+        <textarea cols="90" rows="10" id="output"></textarea>
+        <div id="yoga-notifikasi-hasil-program" class="text-left">
+          <span>Program Anda sudah benar, silahkan menuju materi selanjutnya</span>
+        </div>
+        <div class="row" id="yoga-button-course">
+          <div class="col-md-6">
+            <div class="text-left">
+              {% if course_part.previous_part %}
+
+                <a href="{% url 'loglan:course_part_detail' course_slug=course_part.course.course_slug id_part_course=course_part.previous_part.id%}">
+                  <button type="button" class="btn btn-primary" id="yoga-margin-button-sebelumnya">Sebelumnya</button>
+                </a>
+              {% endif %}
+
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="text-right">
+              {% if course_part.next_part %}
+              <a href="{% url 'loglan:course_part_detail' course_slug=course_part.course.course_slug id_part_course=course_part.next_part.id%}">
+                <button type="button" class="btn btn-primary">Selanjutnya</button>
+              </a>
+              {% else%}
+              <!--  tombol ke list materi -->
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

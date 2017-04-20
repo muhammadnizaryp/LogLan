@@ -1,0 +1,236 @@
+body{
+  background-color: white;
+}
+
+p a{
+  color: #008080;
+}
+
+.yoga-text-white{
+  color:white;
+}
+
+#yoga-menu-navbar-kanan{
+  color: white;
+  font-size: 16px;
+  padding-right: 20px;
+}
+
+#yoga-navbar-kanan{
+  margin-top: 12px !important;
+
+}
+
+#yoga-menu-navbar-kanan:hover,
+#yoga-menu-navbar-kanan:focus,
+#yoga-menu-navbar-kanan:active{
+  text-decoration: none;
+  color: #f2f2f2;
+}
+
+#yoga-menu-course{
+  color: #008080;
+  font-size: 16px;
+}
+
+#yoga-menu-course:hover,
+#yoga-menu-course:focus,
+#yoga-menu-course:active{
+  text-decoration: none;
+  color: #f2f2f2;
+}
+
+#yoga-menu-course:first-child{
+  margin-right: 10px;
+}
+
+#yoga-userpoint{
+  color: yellow;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.yoga-panel-title{
+  color: white;
+  margin-top: -8px;
+  font-weight: 600;
+}
+
+
+#yoga-logo{
+  position: relative;
+  top: -5px;
+}
+
+#yoga-navbar-atas{
+  background-color: #008080;
+  border-radius: 0;
+}
+
+.yoga-button-transparent{
+  background-color: transparent;
+  border-color: white;
+  color: white;
+  margin-top: 8px;
+  border-radius: 0;
+}
+
+#yoga-title{
+  position: absolute;
+  top: 14px;
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  left: 53px;
+}
+
+.yoga-footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 150px;
+  background-color: transparent;
+}
+
+.yoga-footer-inside{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: transparent;
+}
+
+#yoga-caraousel{
+  margin-top: 100px;
+}
+
+.yoga-panel{
+  background-color: #008080;
+  border-radius: 0;
+  margin-top: 100px;
+}
+
+.yoga-panel-dalam{
+  background-color: #000000;
+  width: 10px;
+  height: 10px;
+}
+
+.yoga-panel form input{
+  border-radius: 0;
+}
+
+#yoga-lupa-kata-sandi{
+  color: white;
+}
+
+#yoga-row-pertama-course{
+  margin-bottom: 15px;
+}
+
+#yoga-row-kedua-course{
+  margin-bottom: 15PX;
+}
+
+#yoga-padding-menu-course{
+  padding-top: 10px;
+}
+
+#yoga-margin-button-sebelumnya{
+  margin-left: 25px;
+}
+
+#yoga-button-course{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#yoga-notifikasi-hasil-program{
+  margin-left: 27px;
+  margin-top: 15px;
+}
+
+#yoga-row-pertama-peringkat{
+  margin-top: 30px;
+}
+
+#yoga-judul-peringkat{
+  margin-top: -5px;
+}
+
+#yoga-border-peringkat{
+  border-color: rgb(34, 167, 240);
+}
+
+#yoga-tabel-peringkat{
+  margin-top: 40px;
+}
+
+#yoga-border-bantuan{
+  border-color: rgb(244, 66, 122);
+}
+/*================================================================= carousel ====================================================================*/
+
+.carousel-control.left
+{
+  background: none;
+}
+.carousel-control.right
+{
+  background: none;
+}
+
+.carousel-control
+{
+  position: absolute;
+  top: 45%;
+  bottom: 0;
+  left: 0;
+  width: 15%;
+  font-size: auto;
+  color: #fff;
+  text-align: center;
+  opacity: 1;
+  text-shadow: none;
+}
+.carousel-control:hover
+{
+  color: #000;
+}
+.carousel-indicators
+{
+  bottom: -50px;
+}
+.carousel-indicators li
+{
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 1px;
+  text-indent: -999px;
+  cursor: pointer;
+  background-color: #000\9;
+  background-color: rgba(0,0,0,0);
+  border: 1px solid #16a085;
+  border-radius: 50%;
+}
+.carousel-indicators .active
+{
+  width: 12px;
+  height: 12px;
+  margin: 0;
+  background-color: #16a085;
+}
+.carousel-caption
+{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #fff;
+  text-align: center;
+  background: rgba(0,0,0,0.4);
+}

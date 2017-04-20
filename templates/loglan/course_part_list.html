@@ -1,0 +1,63 @@
+{% extends 'loglan/header_footer.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container-fluid">
+  <div class="col-md-2"></div>
+
+  <div class="col-md-8">
+    <div class="text-center">
+      <div class="row" id="yoga-row-pertama-peringkat">
+        <h2 id="yoga-judul-peringkat"><img id="yoga-logo" src="{% static 'image/piala.png'%}" width="64"/> Peringkat User</h2>
+      </div>
+
+      <div class="row" id="yoga-tabel-peringkat">
+        <div class="row">
+          <div class="col-md-2">
+            Nomor
+          </div>
+          <div class="col-md-4">
+            Materi
+          </div>
+          <div class="col-md-4">
+            Poin
+          </div>
+          <div class="col-md-2">
+            Status
+          </div>
+        </div>
+        <div class="row">
+          <hr id="yoga-border-peringkat"></hr>
+        </div>
+      </div>
+
+      {% for daftar_materi in course.course_parts.all %}
+      <div class="row">
+        <div class="row">
+          <div class="col-md-2">
+
+          </div>
+          <div class="col-md-4">
+            <i class="fa fa-play-circle"> {{ daftar_materi.course_part_name }}</i>
+          </div>
+          <div class="col-md-4">
+            {{ daftar_materi.course_point }}
+          </div>
+          <div class="col-md-2">
+            <i class="fa fa-check-circle"></i>
+          </div>
+        </div>
+        <div class="row">
+          <hr id="yoga-border-peringkat"></hr>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="col-md-2"></div>
+</div>
+
+{% endblock %}

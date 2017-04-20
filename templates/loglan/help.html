@@ -1,0 +1,60 @@
+{% extends 'loglan/header_footer.html' %}
+
+{% block content %}
+
+<div class="container">
+  <div class="col-md-0"></div>
+  <div class="col-md-12">
+    <div class="row text-center">
+      <h2>BANTUAN</h2>
+      <hr id="yoga-border-bantuan"></hr>
+    </div>
+    <div class="row text-left">
+      <h3>Bagaimana cara menggunakan Log-Lan?</h3>
+      <ol>
+        <li>Pertama kali menggunakan Log-Lan, Anda perlu <a href="{% url 'loglan:signup' %}">daftar</a> untuk membuat akun Log-Lan. Akun Log-Lan diperlukan untuk menyimpan progres belajar Anda.</li>
+        <li>Setelah membuat akun Log-Lan, silahkan <a href="{% url 'loglan:login' %}">masuk</a> dengan menggunakan email dan password Anda.</li>
+        <li>Pada halaman utama user, klik "Mulai Belajar" untuk memulai proses Belajar.</li>
+        <li>Pada halaman pilih level, silahkan pilih level belajar dan pilih belajar materi atau mengerjakan kuis.</li>
+        <li>Lihat progres belajar Anda pada <i>progress bar</i>.</li>
+        <li>Lihat perolehan poin belajar dan posisi peringkat Anda pada halaman rangking.</li>
+      </ol>
+      <hr id="yoga-border-bantuan"></hr>
+
+      <h3>Bagaimana cara belajar Materi?</h3>
+      <ol>
+        <li>Silahkan pilih level Materi yang akan dipelajari, Basic atau Intermediate.</li>
+        <li>Materi yang diberikan dalam bentuk teori dan contoh program.</li>
+        <li>Silahkan baca dan pahami materi yang diberikan.</li>
+        <li>Silahkan baca instruksi dan kerjakan program latihan.</li>
+        <li>Ketik kode program Anda pada <i>text editor</i> yang telah disediakan.</li>
+        <li>Klik "Jalankan" untuk melihat apakah kode program Anda benar sesuai instruksi yang diberikan.</li>
+        <li>Jika kode program Anda salah, maka tidak dapat melangkah ke materi selanjutnya. Silahkan ketik kode program kembali sampai benar.</li>
+        <li>Jika kode program Anda benar, maka mendapatkan poin dari materi dan dapat melangkah ke materi selanjutnya.</li>
+        <li>Silahkan belajar materi dan kumpulkan poin sebanyak-banyaknya dari materi untuk meningkatkan peringkat Anda.</li>
+      </ol>
+      <hr id="yoga-border-bantuan"></hr>
+
+      <h3>Bagaimana cara mengerjakan Kuis?</h3>
+      <ol>
+        <li>Kuis hanya bisa dikerjakan setelah menyelesaikan semua materi yang diberikan sesuai level belejar terkait.</li>
+        <li>Silahkan pilih level Kuis yang akan dikerjakan, Basic atau Intermediate.</li>
+        <li>Kuis yang diberikan berupa program sesuai materi dari level terkait.</li>
+        <li>Silahkan baca instruksi dan kerjakan program kuis.</li>
+        <li>Ketik kode program Anda pada <i>text editor</i> yang telah disediakan.</li>
+        <li>Klik "Jalankan" untuk melihat apakah kode program Anda benar atau salah.</li>
+        <li>Kesempatan menjawab satu soal kuis hanya sekali.</li>
+        <li>Silahkan klik "Selanjutnya" untuk mencoba menjawab kuis selanjutnya.</li>
+        <li>Setelah mengerjakan semua kuis yang diberikan, maka hasil kuis dan perolehan poin kuis Anda akan ditampilkan.</li>
+        <li>Jika Anda belum puas dengan perolehan poin kuis saat ini, silahkan mencoba kuis kembali hingga mencapai poin maksimal kuis dan untuk mrningkatkan peringkat Anda.</li>
+      </ol>
+      <hr id="yoga-border-bantuan"></hr>
+
+    </div>
+
+  </div>
+  <div class="col-md-0"></div>
+</div>
+
+
+{% endblock %}
