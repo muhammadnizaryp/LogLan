@@ -63,10 +63,10 @@ window.location = "{% url 'loglan:login' %}";
           {{request.user.username}}
         </div>
         <div class="col-md-4">
-          {{request.user.user_profile.user_course_point}}
+
         </div>
         <div class="col-md-4">
-          1
+
         </div>
       </div>
     </div>
@@ -76,7 +76,7 @@ window.location = "{% url 'loglan:login' %}";
     {% for course_taken in course_taken %}
     <div class="row yoga-panel-biru-progres-bar-halaman-user">
       <div class="text-center yoga-judul-level-progres-bar">
-        Basic
+        {{course_taken.course.course_name}}
       </div>
       <div class="row yoga-panel-toska-progres-bar-halaman-user">
         <div class="col-md-2 yoga-isi-progres">
@@ -84,8 +84,8 @@ window.location = "{% url 'loglan:login' %}";
         </div>
         <div class="col-md-8">
           <div class="progress yoga-progres-bar-halaman-user">
-            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">
-              50%
+            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:{% user_course_progress_per_level request.user course_taken.course.id %}%">
+              {% user_course_progress_per_level request.user course_taken.course.id %} %
             </div>
           </div>
         </div>

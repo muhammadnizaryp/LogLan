@@ -121,9 +121,9 @@ class QuizPart(models.Model):
 class QuizTaken(models.Model):
     user = models.OneToOneField(User, related_name='quiz_taken')
     quiz = models.ForeignKey(Quiz, related_name='quiz_takens')
-    quiz_part_is_true = models.ManyToManyField(QuizPart, related_name='quiz_takens_is_true')
-    quiz_part_is_false = models.ManyToManyField(QuizPart, related_name='quiz_takens_is_false')
-    quiz_part_is_completed = models.ManyToManyField(QuizPart, related_name='quiz_takens_is_completed')
+    quiz_part_is_true = models.ManyToManyField(QuizPart, related_name='quiz_takens_is_true',  blank=True)
+    quiz_part_is_false = models.ManyToManyField(QuizPart, related_name='quiz_takens_is_false',  blank=True)
+    quiz_part_is_completed = models.ManyToManyField(QuizPart, related_name='quiz_takens_is_completed', blank=True)
 
     def __str__(self):
         return self.user.username

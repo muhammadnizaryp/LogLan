@@ -8,22 +8,30 @@
       <p class="text-center" style="font-size:32px; ">{{ quiz_part.quiz_content}}</p>
     </div>
   </div>
-<form  method="POST">
-  {% csrf_token %}
+
+  <form  method="POST">{% csrf_token %}
   <div class="row yoga-panel-pilihan-kuis">
     <div class="row yoga-pilihan-ganda">
 
-      {% for answer in quiz_part.quiz_part_answers.all %}
-        <div class="col-md-6 yoga-button-pilihan-ganda">
-          <input type="radio" name="piljan" value="{{answer.id}}"></input>
-          <button type="button" class="btn btn-default ">{{answer.text_answer}}</button>
+      <div class="col-md-3"></div>
+
+      <div class="col-md-6">
+        {% for answer in quiz_part.quiz_part_answers.all %}
+        <div id="yoga-pilihan">
+          <div type="button" class="btn btn-default yoga-button-pilihan-ganda" id="yoga-pilihan-ganda">
+            <div class="row" id="yoga-row-radio-pilihan-ganda">
+              <input type="radio" class="yoga-radio-pilihan" name="piljan" value="{{answer.id}}" autocomplete="off">
+                {{answer.text_answer}}
+              </input>
+            </div>
+          </div>
         </div>
-      {% endfor %}
+        {% endfor %}
+      </div>
+
+      <div class="col-md-3"></div>
 
     </div>
-    <input type="submit" value="Submit jawaban"></input>
-</form>
-
   </div>
 
   <div class="row" id="yoga-panel-button-belajar">
@@ -33,18 +41,14 @@
         <div class="col-md-3"></div>
         <div class="col-md-6">
           <div class="text-center">
-            <!-- {% if course_part.next_part %} -->
-            <!-- <a id="button-next" href="#">
-              <button type="button" class="btn btn-default" id="yoga-button-belajar">Selanjutnya</button>
-            </a> -->
-            <!-- {% else%} -->
-
-            {% if quiz_part.next_quiz %}
+            <!-- {% if quiz_part.next_quiz %}
             <a href="{% url 'loglan:quiz_part_detail' course_slug=quiz_part.course_part.course.course_slug number_part_quiz=quiz_part.next_quiz.number %}">
-              <button type="button" class="btn btn-default" id="yoga-button-belajar">Kuis Selanjutnya</button>
+              Kuis Selanjutnya
             </a>
-            {% endif %}
-            <!-- {% endif %} -->
+            {% endif %} -->
+            <button type="submit" class="btn btn-default" id="yoga-button-belajar">
+              Pilih Jawaban
+            </button>
           </div>
         </div>
         <div class="col-md-3"></div>
@@ -53,12 +57,12 @@
     <div class="col-md-4"></div>
   </div>
 
+  </form>
+
 </div>
 
 <script>
-/*
-* Shuffle jQuery array of elements - see Fisher-Yates algorithm
-*/
+
 jQuery.fn.shuffle = function () {
     var j;
     for (var i = 0; i < this.length; i++) {
@@ -69,6 +73,17 @@ jQuery.fn.shuffle = function () {
 };
 $('.yoga-button-pilihan-ganda').shuffle();
 
+$(".yoga-button-pilihan-ganda").on("on-click", function() {
+  $('.yoga-button-pilihan-ganda').removeClass('yoga-button-pilihan-ganda');
+  $(this).find("label").addClass('yoga-button-pilihan-ganda');
+});
+
+$('.yoga-button-pilihan-ganda').click(function(){
+	$('#yoga-pilihan > .yoga-button-pilihan-ganda-baru').each(function(){
+  	$(this).removeClass('yoga-button-pilihan-ganda-baru').addClass('yoga-button-pilihan-ganda');
+  });
+	$(this).toggleClass('yoga-button-pilihan-ganda-baru');
+});
 
 </script>
 {% endblock %}

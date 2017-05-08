@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 import hashlib, datetime, random
 import hashlib
 import json
-from .models import UserActivationKey, Course, CoursePart, QuizPart, CourseTaken
+from .models import UserActivationKey, Course, CoursePart, QuizPart, CourseTaken, QuizTaken, QuizPartAnswer
 from django.core.mail import send_mail
 from django.utils import timezone
 from django.conf import settings
@@ -87,17 +87,20 @@ def ranking_view(request):
 def home_view(request):
     return render(request, "loglan/about.html")
 
+
 def user_main_page_view(request):
     context = {}
     course_taken = CourseTaken.objects.filter(user=request.user)
     context['course_taken']=course_taken
     return render(request, "loglan/user_main_page.html", context)
 
+
 def choose_level_view(request):
     context = {}
     courses = Course.objects.all()
     context['courses']=courses
     return render(request, "loglan/choose_level.html", context )
+
 
 def quiz_part_detail_view(request, course_slug, number_part_quiz):
 
@@ -113,11 +116,12 @@ def quiz_part_detail_view(request, course_slug, number_part_quiz):
         jawaban = QuizPartAnswer.objects.get(id=jawaban_id)
         print(jawaban_id)
         if quiz_part.quiz_answer_key.id == jawaban_id:
-            quiz_taken.quiz_part_is_true.add(jawaban)
+            quiz_taken.quiz_part_is_true.add(quiz_part)
+            pass
         else:
-            quiz_taken.quiz_part_is_false.add(jawaban)
-        #proses jawaban
-        # return HttpResponseRedirect('{% url 'loglan:quiz_part_detail' %}')
+            pass
+            quiz_taken.quiz_part_is_false.add(quiz_part)
+        return HttpResponseRedirect('/quiz/{}/{}/'.format(course_slug, quiz_part.next_quiz().number))
 
     context = {}
     context['quiz_part'] = quiz_part

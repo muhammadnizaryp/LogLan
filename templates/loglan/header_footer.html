@@ -40,8 +40,8 @@
       <div class="collapse navbar-collapse" id="yoga-navbar-collapse">
         <ul class="nav navbar-nav navbar-right" >
           <li><a href="{% url 'loglan:user_main_page' %}" class="fa fa-user-o" id="yoga-menu-navbar-kanan"> {{request.user.username}}</a></li>
-          <li><a href="{% url 'loglan:ranking' %}" class="fa fa-bar-chart" id="yoga-menu-navbar-kanan"> peringkat</a></li>
-          <li><a href="{% url 'loglan:help' %}" class="fa fa-hand-paper-o" id="yoga-menu-navbar-kanan"> bantuan</a></li>
+          <li><a href="{% url 'loglan:ranking' %}" class="fa fa-bar-chart" id="yoga-menu-navbar-kanan"> Peringkat</a></li>
+          <li><a href="{% url 'loglan:help' %}" class="fa fa-hand-paper-o" id="yoga-menu-navbar-kanan"> Bantuan</a></li>
           <li><a href="/logout" class="fa fa-sign-out" id="yoga-menu-navbar-kanan"> keluar</a></li>
         </ul>
       </div>
@@ -51,7 +51,7 @@
           <li><a href="{% url 'loglan:login' %}" class="fa fa-sign-in" id="yoga-menu-navbar-kanan"> Masuk</a></li>
           <li><a href="{% url 'loglan:signup' %}" class="fa fa-user" id="yoga-menu-navbar-kanan"> Daftar</a></li>
           <li><a href="{% url 'loglan:home' %}" class="fa fa-question" id="yoga-menu-navbar-kanan"> Tentang</a></li>
-          <li><a href="{% url 'loglan:help' %}" class="fa fa-hand-paper-o" id="yoga-menu-navbar-kanan"> bantuan</a></li>
+          <li><a href="{% url 'loglan:help' %}" class="fa fa-hand-paper-o" id="yoga-menu-navbar-kanan"> Bantuan</a></li>
         </ul>
       </div>
       {% endif %}
