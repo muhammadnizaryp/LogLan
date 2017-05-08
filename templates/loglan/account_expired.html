@@ -1,5 +1,15 @@
 {% extends 'loglan/header_footer.html' %}
 
 {% block content %}
-<h2>Your Loglan account's is expired </h2>
+
+<div class="row">
+  <div class="container-fluid yoga-minimal-tinggi-halaman">
+    <div id="yoga-panel-tentang-daftar-biru-tua">
+      <div id="yoga-padding-sukses-daftar">
+      <h2>Konfirmasi akun Log-Lan Anda gagal karena konfirmasi yang Anda lakukan sudah melampaui batas waktu yang telah ditentukan. Silahkan untuk <a href="{% url 'loglan:signup' %}">daftar</a> akun Log-Lan kembali.</h2>
+    </div>
+    </div>
+  </div>
+</div>
+
 {% endblock %}

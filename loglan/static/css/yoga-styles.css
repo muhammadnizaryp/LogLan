@@ -2,8 +2,21 @@ body{
   background-color: white;
 }
 
+.yoga-background-biru-tua{
+  background-color: #152B39;
+  height: 50px;
+}
+
+.yoga-minimal-tinggi-halaman{
+  min-height: 763px;
+}
+
 p a{
   color: #008080;
+}
+
+.yoga-a-gambar{
+  color: white;
 }
 
 .yoga-text-white{
@@ -16,28 +29,11 @@ p a{
   padding-right: 20px;
 }
 
-#yoga-navbar-kanan{
-  margin-top: 12px !important;
-
-}
-
 #yoga-menu-navbar-kanan:hover,
 #yoga-menu-navbar-kanan:focus,
 #yoga-menu-navbar-kanan:active{
   text-decoration: none;
-  color: #f2f2f2;
-}
-
-#yoga-menu-course{
-  color: #008080;
-  font-size: 16px;
-}
-
-#yoga-menu-course:hover,
-#yoga-menu-course:focus,
-#yoga-menu-course:active{
-  text-decoration: none;
-  color: #f2f2f2;
+  color: #23527C;
 }
 
 #yoga-menu-course:first-child{
@@ -52,7 +48,7 @@ p a{
 
 .yoga-panel-title{
   color: white;
-  margin-top: -8px;
+  margin-top: 10px;
   font-weight: 600;
 }
 
@@ -60,6 +56,34 @@ p a{
 #yoga-logo{
   position: relative;
   top: -5px;
+}
+
+#yoga-logo-selamat-datang{
+  margin-top: 40px;
+}
+
+#yoga-col-selamat-datang{
+  margin-top: 101px;
+}
+
+#yoga-teks-selamat-datang{
+  font-size: 67px;
+  margin-left: 8px;
+  color: white;
+}
+
+#yoga-teks-loglan{
+  font-size: 67px;
+  margin-left: 8px;
+  color: #008080;
+}
+
+#yoga-teks-penjelasan-loglan{
+  color: #E9EAEA;
+  font-size: 23px;
+  margin-top: 40px;
+  margin-left: 250px;
+  margin-right: 20px;
 }
 
 #yoga-navbar-atas{
@@ -75,6 +99,67 @@ p a{
   border-radius: 0;
 }
 
+.yoga-button-transparent-hijau{
+  background-color: transparent;
+  border-color: #008080;
+  color: #008080;
+  margin-top: 8px;
+  border-radius: 0;
+}
+
+#yoga-button-jalankan{
+  background-color: #008080;
+  border-color: #008080;
+  border-radius: 0;
+  color: white;
+  font-size: 20px;
+  margin: 17px 0;
+}
+
+#yoga-button-jalankan:hover,
+#yoga-button-jalankan:focus,
+#yoga-button-jalankan:active{
+  background-color: #E91010;
+  border-color: #E91010;
+}
+
+#yoga-button-belajar{
+  background-color: #008080;
+  border-color: #008080;
+  border-radius: 0;
+  color: white;
+  font-size: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+#yoga-button-belajar:hover,
+#yoga-button-belajar:focus,
+#yoga-button-belajar:active{
+  background-color: #46C9B6;
+  border-color: #46C9B6;
+}
+
+.yoga-button-pilihan-ganda{
+  background-color: #46C9B6;
+  border-color: #46C9B6;
+  border-radius: 0;
+  color: white;
+  font-size: 20px;
+  width: 100%;
+  height: 200px;
+}
+.yoga-pilihan-ganda input[type="radio"]:checked{
+  background-color: #fff;
+}
+
+.yoga-button-pilihan-ganda:hover,
+.yoga-button-pilihan-ganda:active,
+.yoga-button-pilihan-ganda:focus{
+  background-color: #27666E;
+  border-color: #27666E;
+}
+
 #yoga-title{
   position: absolute;
   top: 14px;
@@ -84,36 +169,135 @@ p a{
   left: 53px;
 }
 
-.yoga-footer{
-  position: absolute;
+.footer{
+  position: relative;
   bottom: 0;
   width: 100%;
-  height: 150px;
-  background-color: transparent;
+  height: 120px;
+  background-color: #008080;
 }
 
-.yoga-footer-inside{
-  position: absolute;
-  bottom: 0;
+.yoga-footer-konten{
+  color: white;
+  margin-top: 17px;
+}
+
+#yoga-panel-tentang-daftar-biru-tua{
+  background-color: #354551;
   width: 100%;
-  height: 60px;
-  background-color: transparent;
+  height: 420px;
+  margin-top: 150px;
 }
 
+#yoga-panel-selamat-datang-biru-tua{
+  background-color: #354551;
+  width: 100%;
+  height: 420px;
+  margin-top: 50px;
+}
+
+#yoga-panel-selamat-datang-abu-abu{
+  background-color: #435560;
+  width: 100%;
+  height: 220px;
+  margin-top: 0px;
+}
+
+#yoga-margin-panel-pilih-level{
+  margin: 100px 0;
+}
 #yoga-caraousel{
   margin-top: 100px;
 }
 
+.yoga-panel-python-halaman-user{
+  background-color: #435560;
+  border-radius: 0;
+  margin: 40px 0;
+}
+
+.yoga-panel-level-python{
+  background-color: #435560;
+  border-radius: 0;
+}
+
+.yoga-panel-profil-halaman-user{
+  margin: 40px 0;
+}
+
 .yoga-panel{
-  background-color: #008080;
+  background-color: #435560;
   border-radius: 0;
   margin-top: 100px;
 }
 
-.yoga-panel-dalam{
-  background-color: #000000;
-  width: 10px;
-  height: 10px;
+.yoga-panel-mulai-belajar-abu-abu{
+  background-color: #E9EAEA;
+  height: 128px;
+}
+
+.yoga-panel-level-python-abu-abu{
+  background-color: #E9EAEA;
+  height: 128px;
+  font-size: 18px;
+  padding: 10px;
+  color: #435560;;
+}
+
+#yoga-panel-penjelasan-putih{
+  background-color: #F0F2F3;
+  color: #435560;
+  padding: 15px;
+}
+
+.yoga-panel-biru-progres-bar-halaman-user{
+  background-color: #435560;
+  height: 250px;
+  padding: 0 20px;
+}
+
+.yoga-panel-biru-profil-halaman-user{
+  background-color: #435560;
+  color: #46C9B6;
+  font-size: 24px;
+  height: 70px;
+}
+
+.yoga-isi-profil-halaman-user{
+  margin: 10px 0;
+}
+
+.yoga-judul-profil-halaman-user{
+  margin: 5px 0;
+}
+
+.yoga-panel-toska-profil-halaman-user{
+  background-color: #46C9B6;
+  color: #435560;
+  font-size: 24px;
+  height: 50px;
+}
+.yoga-panel-toska-progres-bar-halaman-user{
+  background-color: #46C9B6;
+  height: 50px;
+  padding: 0 20px;
+  margin: 20px 10px;
+}
+
+.yoga-progres-bar-halaman-user{
+  margin: 15px 0;
+}
+
+.yoga-judul-level-progres-bar{
+  color: white;
+  font-size: 25px;
+  margin: 10px 0;
+}
+
+.yoga-isi-progres{
+  color: white;
+  font-size: 20px;
+  margin: 10px 0;
 }
 
 .yoga-panel form input{
@@ -125,29 +309,38 @@ p a{
 }
 
 #yoga-row-pertama-course{
-  margin-bottom: 15px;
+  margin-top: -20px;
 }
 
-#yoga-row-kedua-course{
-  margin-bottom: 15PX;
+#yoga-progres-course-detail{
+  margin-top: 20px;
 }
 
-#yoga-padding-menu-course{
+#yoga-jarak-menu-course{
   padding-top: 10px;
+  margin-left: -16px;
+  margin-top: 14px;
 }
 
 #yoga-margin-button-sebelumnya{
   margin-left: 25px;
 }
 
-#yoga-button-course{
-  margin-top: 15px;
-  margin-bottom: 15px;
+.yoga-notifikasi-hasil-program{
+  margin-top: 22px;
+  background-color: #152B39;
+  height: 50px;
+  color: white;
+  font-size: 23px;
 }
 
-#yoga-notifikasi-hasil-program{
-  margin-left: 27px;
-  margin-top: 15px;
+.yoga-output-program{
+  background-color: #17171A;
+  height: 150px;
+  color: white;
+  font-size: 15px;
+  padding: 13px;
+  overflow-y:scroll;
 }
 
 #yoga-row-pertama-peringkat{
@@ -167,11 +360,98 @@ p a{
 }
 
 #yoga-border-bantuan{
-  border-color: rgb(244, 66, 122);
+  border-color: #46C9B6;
+}
+
+#yoga-padding-tentang-daftar{
+  padding: 150px;
+  color: #EBEBEB;
+}
+
+.yoga-penjelasan-python{
+  color: #435560;
+}
+
+.yoga-tempat-materi{
+  overflow-y:scroll;
+  height: 583px;
+  background-color: white;
+  padding: 10px 10px;
+}
+
+#yoga-panel-button-belajar{
+  background-color: #354551;
+  height: 70px;
+}
+
+#yoga-margin-panel-button-selanjutnya-sebelumnya{
+  margin: 13px 0;
+}
+
+#yoga-panel-teks-editor{
+  height: 340px;
+  background-color: #354551;
+  padding: 12px 12px;
+}
+
+.yoga-no-gutter > [class*='col-'] {
+    padding-right:0;
+    padding-left:0;
+}
+
+#yoga-background-course{
+  background-color: #152B39;
+  padding-top: 30px;
+}
+
+.yoga-poin-course-detail{
+  color: #46C9B6;
+  margin-top: 20px;
+}
+
+.yoga-panel-soal-kuis{
+  height: 200px;
+  color:white;
+  padding:40px;
+
+}
+
+.yoga-panel-pilihan-kuis{
+  height: 513px;
+  padding:20px;
+  margin-top: -40px;
+  margin-bottom: 10px;
+}
+
+.yoga-pilihan-ganda{
+  height: 250px;
+  padding: 20px;
+}
+
+.yoga-background-kuis{
+  background-color: #354551;
+  min-height: 783px;
+  margin-top: -20px;
+}
+
+.yoga-background-bantuan{
+  background-color: #354551;
+  width: 100%;
+  min-height: 783px;
+  margin-top: -20px;
+  color: white;
+}
+
+.yoga-background-rangking{
+  background-color: #354551;
+  width: 100%;
+  min-height: 783px;
+  margin-top: -20px;
+  color: white;
 }
 /*================================================================= carousel ====================================================================*/
 
-.carousel-control.left
+/*.carousel-control.left
 {
   background: none;
 }
@@ -233,4 +513,4 @@ p a{
   color: #fff;
   text-align: center;
   background: rgba(0,0,0,0.4);
-}
+}*/

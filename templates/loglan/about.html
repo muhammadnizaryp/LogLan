@@ -1,12 +1,37 @@
 {% extends 'loglan/header_footer.html' %}
 
-{% block content %}
-<div class="container">
-  <div class="col-md-4"></div>
-  <div class="col-md-4">
-    <p>Yoga</p>
-  </div>
-  <div class="col-md-4"></div>
-</div>
+{% load staticfiles %}
 
+{% block content %}
+<script>
+  {% if user.is_authenticated %}
+    window.location = "{% url 'loglan:user_main_page' %}";
+  {% endif %}
+</script>
+
+<div class="container-fluid yoga-minimal-tinggi-halaman">
+  <div class="row">
+    <div id="yoga-panel-selamat-datang-biru-tua">
+      <div class="col-md-6">
+        <div class="col-md-4">
+          <img id="yoga-logo-selamat-datang" src="{% static 'image/logo1.png'%}" width="256"/>
+        </div>
+        <div class="col-md-8 text-left" id="yoga-col-selamat-datang">
+          <h1 id="yoga-teks-selamat-datang">Selamat Datang</h1>
+          <h1 id="yoga-teks-loglan">{ Log-Lan }</h1>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <p id="yoga-teks-penjelasan-loglan" class="text-center">Log-Lan (Logarithm-Language) adalah sebuah e-learning bahasa pemrograman python berbasis Gamification.</p>
+        <p id="yoga-teks-penjelasan-loglan" class="text-center">E-learning ini menyediakan beberapa fitur yaitu memilih level belajar, materi dalam bentuk pemrograman interaktif, kuis dalam bentuk pilihan ganda, tantangan untuk <i>un-lock</i> materi dan kuis, serta poin user untuk meningkatkan rangking.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div id="yoga-panel-selamat-datang-abu-abu">
+
+    </div>
+  </div>
+</div>
 {% endblock %}

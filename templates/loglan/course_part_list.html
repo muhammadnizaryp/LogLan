@@ -1,63 +1,99 @@
 {% extends 'loglan/header_footer.html' %}
 
-{% load staticfiles %}
+{% load course lock %}
 
 {% block content %}
 
-<div class="container-fluid">
-  <div class="col-md-2"></div>
+<div class="container-fluid yoga-minimal-tinggi-halaman">
 
-  <div class="col-md-8">
-    <div class="text-center">
-      <div class="row" id="yoga-row-pertama-peringkat">
-        <h2 id="yoga-judul-peringkat"><img id="yoga-logo" src="{% static 'image/piala.png'%}" width="64"/> Peringkat User</h2>
+  <div class="row yoga-background-biru-tua" id="yoga-row-pertama-course" >
+    <div class="col-md-6" id="yoga-jarak-menu-course">
+      <div class="col-md-4">
+        {% last_taken_part request.user course as last_part %}
+        <a href="{% url 'loglan:course_part_detail' course_slug=course.course_slug number_part_course=last_part.number %}" class="btn btn-default" id="yoga-button-belajar"> Belajar</a>
       </div>
-
-      <div class="row" id="yoga-tabel-peringkat">
-        <div class="row">
-          <div class="col-md-2">
-            Nomor
-          </div>
-          <div class="col-md-4">
-            Materi
-          </div>
-          <div class="col-md-4">
-            Poin
-          </div>
-          <div class="col-md-2">
-            Status
-          </div>
-        </div>
-        <div class="row">
-          <hr id="yoga-border-peringkat"></hr>
-        </div>
+      <div class="col-md-4">
+        <a href="{% url 'loglan:course_part_list' course_slug=course.course_slug %}" class="btn btn-default" id="yoga-button-belajar"> Daftar Materi</a>
       </div>
-
-      {% for daftar_materi in course.course_parts.all %}
-      <div class="row">
-        <div class="row">
-          <div class="col-md-2">
-
-          </div>
-          <div class="col-md-4">
-            <i class="fa fa-play-circle"> {{ daftar_materi.course_part_name }}</i>
-          </div>
-          <div class="col-md-4">
-            {{ daftar_materi.course_point }}
-          </div>
-          <div class="col-md-2">
-            <i class="fa fa-check-circle"></i>
-          </div>
-        </div>
-        <div class="row">
-          <hr id="yoga-border-peringkat"></hr>
-        </div>
-      </div>
-      {% endfor %}
+      <div class="col-md-2"></div>
+      <div class="col-md-2"></div>
     </div>
   </div>
 
-  <div class="col-md-2"></div>
+  <div class="row">
+    <div class="col-md-2"></div>
+
+    <div class="col-md-8 text-center">
+
+        <div class="row" id="yoga-row-pertama-peringkat">
+          <h2 id="yoga-judul-peringkat">Daftar Materi Python {{course.course_name}}</h2>
+        </div>
+
+        <div class="row text-right">
+          <h4>Progres Anda 1/10</h4>
+        </div>
+
+        <div class="row" id="yoga-tabel-peringkat">
+          <div class="row">
+            <div class="col-md-2">
+              Nomor
+            </div>
+            <div class="col-md-4" class="text-left">
+              Materi
+            </div>
+            <div class="col-md-4">
+              Poin
+            </div>
+            <div class="col-md-2">
+              Status
+            </div>
+          </div>
+          <div class="row">
+            <hr id="yoga-border-peringkat"></hr>
+          </div>
+        </div>
+
+        {% for course_part in course.course_parts.all %}
+        <div class="row">
+          <div class="row">
+            <div class="col-md-2">
+              {{ course_part.number }}
+            </div>
+            <div class="col-md-4" class="text-left">
+              <a href="{% url 'loglan:course_part_detail' course_slug=course_part.course.course_slug number_part_course=course_part.number %}"
+                class="{% part_lock request.user course_part %}">
+                <div class="row">
+                  <div class="col-md-3 text-right"><i class="fa fa-play-circle"></i></div>
+                  <div class="col-md-9 text-left">{{ course_part.course_part_name }}</div>
+                </div>
+              </a>
+            </div>
+            <div class="col-md-4">
+              {{ course_part.course_point }}
+            </div>
+            <div class="col-md-2 symbol-{% part_lock request.user course_part %}">
+              <i class="fa"></i>
+            </div>
+          </div>
+          <div class="row">
+            <hr id="yoga-border-peringkat"></hr>
+          </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <div class="col-md-2"></div>
+  </div>
 </div>
+
+<script>
+  $('.locked').click(function( event ) {
+    event.preventDefault();
+    alert('Part ini masih dikunci, kerjakan part sebelumnya sampai benar.');
+  });
+  $('.symbol-unlocked i').addClass('fa fa-unlock');
+  $('.symbol-locked i').addClass('fa fa-lock');
+</script>
 
 {% endblock %}

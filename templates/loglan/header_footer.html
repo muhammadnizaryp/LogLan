@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load static %}
 
 <!DOCTYPE html>
 
@@ -25,34 +25,33 @@
 
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#yoga-navbar-collapse" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
+          <span class="sr-only"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{% url 'loglan:user_main_page' %}">
           <img id="yoga-logo" src="{% static 'image/Logo.png'%}" width="32"/>
-          <span id="yoga-title">Log-Lan</span>
+          <span id="yoga-title"> Log-Lan</span>
         </a>
       </div>
 
       {% if user.is_authenticated %}
       <div class="collapse navbar-collapse" id="yoga-navbar-collapse">
-        <ul class="nav navbar-nav navbar-right" id="yoga-navbar-kanan">
-            <a href="{% url 'loglan:user_main_page' %}" class="fa fa-user-o" id="yoga-menu-navbar-kanan"> {{request.user.username}}</a>
-            <a href="{% url 'loglan:ranking' %}" class="fa fa-bar-chart" id="yoga-menu-navbar-kanan"> peringkat</a>
-            <a href="{% url 'loglan:help' %}" class="fa fa-hand-paper-o" id="yoga-menu-navbar-kanan"> bantuan</a>
-            <a href="/logout" class="fa fa-sign-out" id="yoga-menu-navbar-kanan"> keluar</a>
-            <a href="#" id="yoga-userpoint" class="fa fa-database"> {{request.user.total_scores.total_score}} point</a>
+        <ul class="nav navbar-nav navbar-right" >
+          <li><a href="{% url 'loglan:user_main_page' %}" class="fa fa-user-o" id="yoga-menu-navbar-kanan"> {{request.user.username}}</a></li>
+          <li><a href="{% url 'loglan:ranking' %}" class="fa fa-bar-chart" id="yoga-menu-navbar-kanan"> peringkat</a></li>
+          <li><a href="{% url 'loglan:help' %}" class="fa fa-hand-paper-o" id="yoga-menu-navbar-kanan"> bantuan</a></li>
+          <li><a href="/logout" class="fa fa-sign-out" id="yoga-menu-navbar-kanan"> keluar</a></li>
         </ul>
       </div>
       {% else %}
       <div class="collapse navbar-collapse" id="yoga-navbar-collapse">
-        <ul class="nav navbar-nav navbar-right" id="yoga-navbar-kanan">
-            <a href="{% url 'loglan:login' %}" class="fa fa-sign-in" id="yoga-menu-navbar-kanan"> Masuk</a>
-            <a href="{% url 'loglan:signup' %}" class="fa fa-user" id="yoga-menu-navbar-kanan"> Daftar</a>
-            <a href="{% url 'loglan:about' %}" class="fa fa-question" id="yoga-menu-navbar-kanan"> Tentang</a>
-            <a href="{% url 'loglan:help' %}" class="fa fa-hand-paper-o" id="yoga-menu-navbar-kanan"> bantuan</a>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{% url 'loglan:login' %}" class="fa fa-sign-in" id="yoga-menu-navbar-kanan"> Masuk</a></li>
+          <li><a href="{% url 'loglan:signup' %}" class="fa fa-user" id="yoga-menu-navbar-kanan"> Daftar</a></li>
+          <li><a href="{% url 'loglan:home' %}" class="fa fa-question" id="yoga-menu-navbar-kanan"> Tentang</a></li>
+          <li><a href="{% url 'loglan:help' %}" class="fa fa-hand-paper-o" id="yoga-menu-navbar-kanan"> bantuan</a></li>
         </ul>
       </div>
       {% endif %}
@@ -63,22 +62,45 @@
 
   {% endblock %}
 
-  {% if user.is_authenticated %}
-  <footer class="footer yoga-footer-inside">
-    <div class="container text-center">
-      <p class="text-muted">Copyrights @2017 Log-Lan. All Rights Reserved</p>
+  <footer class="footer">
+    <div class="container">
+      <div class="row yoga-footer-konten">
+
+        <div class="col-md-4 text-center">
+          <p>Log-Lan is a e-learning platform based Gamification</p>
+          <p>This e-learning is deployed for research purpose</p>
+          <p>Copyrights @2017 Log-Lan. All Rights Reserved</p>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h4><strong>About Developer</strong></h4>
+          <ul class="list-inline">
+            <li>
+              <a href="https://github.com/muhammadnizaryp/" class="yoga-a-gambar">
+                <i class="fa fa-github fa-2x"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/muhammad-nizar-yoga-pratama-532924112/" class="yoga-a-gambar">
+                <i class="fa fa-linkedin-square fa-2x"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h4><strong>Related Research</strong></h4>
+          <ul class="list-inline">
+            <li>
+              <a href="http://bepy.pythonanywhere.com/learning/" class="yoga-a-gambar">
+                <h4><strong>© Be-Py</strong></h4>
+              </a>
+            </li>
+        </div>
+
+      </div>
     </div>
   </footer>
-  {% else %}
-  <footer class="footer yoga-footer">
-    <div class="container text-center">
-      <p>Log-Lan is a e-learning platform to learn Python programming language</p>
-      <p>This e-learning is deployed for research purpose.</p>
-      <p>Founder: <a href="https://www.linkedin.com/in/muhammad-nizar-yoga-pratama-532924112/"> Muhammad Nizar Yoga Pratama </a></p>
-      <p class="text-muted">Copyrights @2017 Log-Lan. All Rights Reserved</p>
-    </div>
-  </footer>
-  {% endif %}
 
   <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
   <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>

@@ -5,7 +5,6 @@ from django.contrib.auth.views import login
 
 urlpatterns=[
         url(r'^$', views.home_view, name='home'),
-        url(r'^about/$', views.about_view, name='about'),
         url(r'^sign-up/$', views.signup_view, name='signup'),
         url(r'^sign-up/succes/$', views.signup_succes_view, name='signup_succes'),
         url(r'^account/confirmation/(?P<activation_key>\w+)/$', views.account_confirmation_view, name='account_confirmation'),
@@ -16,11 +15,10 @@ urlpatterns=[
         url(r'^ranking/$', views.ranking_view, name='ranking'),
         url(r'^logout/$', views.logout_view, name='logout'),
         url(r'^user-main-page/$', views.user_main_page_view, name='user_main_page'),
-        url(r'^chooselevel/$', views.choose_level_view, name='choose_level'),
-        url(r'^course/(?P<course_slug>[\w-]+)/part-detail/(?P<id_part_course>[0-9]+)/$', views.course_part_detail_view, name='course_part_detail'),
+        url(r'^choose-level/$', views.choose_level_view, name='choose_level'),
+        url(r'^course/(?P<course_slug>[\w-]+)/(?P<number_part_course>[0-9]+)/$', views.course_part_detail_view, name='course_part_detail'),
         url(r'^course/(?P<course_slug>[\w-]+)/part-list/$', views.course_part_list_view, name='course_part_list'),
-        url(r'^quiz/(?P<course_slug>[\w-]+)/part-detail/(?P<id_part_quiz>[0-9]+)/$', views.quiz_part_detail_view, name='quiz_part_detail'),
-
+        url(r'^course/(?P<course_slug>[\w-]+)/part-result/$', views.course_part_result_view, name='course_part_result'),
+        url(r'^quiz/(?P<course_slug>[\w-]+)/(?P<number_part_quiz>[0-9]+)/$', views.quiz_part_detail_view, name='quiz_part_detail'),
+        url(r'^cek_jawaban/$', views.cek_jawaban, name='cek_jawaban'),
 ]
-
-# (?P<id_part>[0-9]+)

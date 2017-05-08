@@ -3,13 +3,20 @@
 {% load staticfiles %}
 
 {% block content %}
-<div class="container-fluid">
+
+<script>
+  {% if not user.is_authenticated %}
+    window.location = "{% url 'loglan:login' %}";
+  {% endif %}
+</script>
+
+<div class="container-fluid yoga-background-rangking">
   <div class="col-md-2"></div>
 
   <div class="col-md-8">
     <div class="text-center">
       <div class="row" id="yoga-row-pertama-peringkat">
-        <h2 id="yoga-judul-peringkat"><img id="yoga-logo" src="{% static 'image/piala.png'%}" width="64"/> Peringkat User</h2>
+        <h2 id="yoga-judul-peringkat">Peringkat User</h2>
       </div>
 
       <div class="row" id="yoga-tabel-peringkat">
@@ -38,7 +45,7 @@
             yoga
           </div>
           <div class-"col-md-4">
-            <h6>1000 point</h6>
+            <h6>100 poin</h6>
           </div>
         </div>
         <div class="row">

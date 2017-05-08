@@ -6,15 +6,15 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 import hashlib, datetime, random
 import hashlib
+import json
 from .models import UserActivationKey, Course, CoursePart, QuizPart, CourseTaken
 from django.core.mail import send_mail
 from django.utils import timezone
 from django.conf import settings
 from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect, HttpResponse
 
 # Create your views here.
-def home_view(request):
-    return render(request, "loglan/home.html",)
 
 def signup_view(request):
     if request.method == 'POST':
@@ -84,11 +84,14 @@ def help_view(request):
 def ranking_view(request):
     return render(request, "loglan/ranking.html")
 
-def about_view(request):
+def home_view(request):
     return render(request, "loglan/about.html")
 
 def user_main_page_view(request):
-    return render(request, "loglan/user_main_page.html")
+    context = {}
+    course_taken = CourseTaken.objects.filter(user=request.user)
+    context['course_taken']=course_taken
+    return render(request, "loglan/user_main_page.html", context)
 
 def choose_level_view(request):
     context = {}
@@ -96,8 +99,34 @@ def choose_level_view(request):
     context['courses']=courses
     return render(request, "loglan/choose_level.html", context )
 
-def course_part_detail_view(request, course_slug, id_part_course):
-    course_part = CoursePart.objects.get(id=id_part_course)
+def quiz_part_detail_view(request, course_slug, number_part_quiz):
+
+    quiz_part = QuizPart.objects.get(number=number_part_quiz, quiz__course__course_slug = course_slug)
+
+    quiz_taken, created = QuizTaken.objects.get_or_create(
+        user=request.user,
+        quiz=quiz_part.quiz
+    )
+
+    if request.method == "POST":
+        jawaban_id = int(request.POST.get("piljan"))
+        jawaban = QuizPartAnswer.objects.get(id=jawaban_id)
+        print(jawaban_id)
+        if quiz_part.quiz_answer_key.id == jawaban_id:
+            quiz_taken.quiz_part_is_true.add(jawaban)
+        else:
+            quiz_taken.quiz_part_is_false.add(jawaban)
+        #proses jawaban
+        # return HttpResponseRedirect('{% url 'loglan:quiz_part_detail' %}')
+
+    context = {}
+    context['quiz_part'] = quiz_part
+    return render(request, "loglan/quiz_part_detail.html", context)
+
+
+def course_part_detail_view(request, course_slug, number_part_course):
+    course = Course.objects.get(course_slug=course_slug)
+    course_part = CoursePart.objects.get(number=number_part_course, course=course)
 
     # cek udah pernah belajar course ini apa belom
     course_taken, created = CourseTaken.objects.get_or_create(
@@ -105,27 +134,64 @@ def course_part_detail_view(request, course_slug, id_part_course):
         course=course_part.course
     )
 
-    # if created:
-    #     pass
-    # else:
-    #     next_part = CoursePart.objects.filter(course=course_part.course).filter(id__gt=course_part.id).order_by('id')[0:1]
-    #     # kalau udah pernah ngerjain, langsung diredirect ke part terakhir bener + next 1 part
-    #
-    #     return HttpResponseRedirect(reverse('course:course_part_detail', kwargs={'course_slug': course_part.course.course_slug, 'id_part_course': next_part_id}))
-    #     pass
+    if created:
+        course_taken.course_part.add(course.course_parts.all()[0])
+
     context = {}
     context['course_part'] = course_part
     return render(request, "loglan/course_part_detail.html", context )
 
 def course_part_list_view(request, course_slug):
-    # show
+    context = {}
+    course = Course.objects.get(course_slug=course_slug)
+    # cek udah pernah belajar course ini apa belom
+    course_taken, created = CourseTaken.objects.get_or_create(
+        user=request.user,
+        course=course
+    )
+    if created:
+        course_taken.course_part.add(course.course_parts.all()[0])
+
+    context['course'] = course
+    context['course_taken'] = course_taken
+    return render(request, "loglan/course_part_list.html", context)
+
+def course_part_result_view(request, course_slug):
     context = {}
     course = Course.objects.get(course_slug=course_slug)
     context['course'] = course
-    return render(request, "loglan/course_part_list.html", context)
+    return render(request, "loglan/course_part_result.html", context)
 
-def quiz_part_detail_view(request,course_slug, id_part_quiz):
-    context = {}
-    quiz_part = QuizPart.objects.get(id=id_part_quiz)
-    context['quiz_part'] = quiz_part
-    return render(request,"loglan/quiz_part_detail.html", context)
+def cek_jawaban(request):
+    if request.method == 'POST':
+        kode_jawaban = request.POST.get('jawaban')
+        console_user = request.POST.get('console_user')
+        user_id = request.POST.get('user_id')
+        course_part_id = request.POST.get('course_part_id')
+        response_data = {}
+        user = User.objects.get(id=int(user_id))
+        soal = CoursePart.objects.get(id=int(course_part_id))
+
+        print('soal.id', soal.id)
+        print('soal.course_example_answer_key: ', soal.course_example_answer_key)
+        kunci = soal.course_example_answer_key.replace(u'\r',u'')
+        kunci =u'{}\n'.format(kunci)
+
+        print('kode_jawaban: ', kode_jawaban)
+        print('kunci: ', kunci)
+        if kunci == kode_jawaban:
+            hasil_jawaban = "Kode program Anda benar"
+            course_taken = CourseTaken.objects.get(user=request.user, course=soal.course)
+            course_taken.course_part.add(soal)
+            course_taken.save()
+
+        else:
+            hasil_jawaban = "Kode program Anda salah"
+
+        response_data['hasil_jawaban'] = hasil_jawaban
+        response_data['jawaban_html'] = kode_jawaban
+        print(response_data)
+        return HttpResponse(json.dumps(response_data), content_type="application/json")
+
+    else:
+        return HttpResponse(json.dumps({"nothing to see": "this isn't happening"}), content_type="application/json")
