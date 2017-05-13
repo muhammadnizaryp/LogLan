@@ -18,6 +18,15 @@ class UserProfile(models.Model):
                 point += course_part.course_point
         return point
 
+    def user_quiz_point(self):
+        point = 0
+        quiz_taken_list = QuizTaken.objects.filter(user=self.user)
+        for quiz_taken in quiz_taken_list:
+            for quiz_part_is_true in quiz_taken.quiz_part_is_true.all():
+                point += quiz_part_is_true.quiz_point
+        return point
+
+
 class UserActivationKey(models.Model):
     user = models.OneToOneField(User)
     activation_key = models.CharField(max_length=40, blank=True)
@@ -65,6 +74,14 @@ class CoursePart(models.Model):
         except IndexError:
             return None
 
+    def is_last_course_part(self):
+        # dibalik dari nomer gede ke kecil
+        course_parts = CoursePart.objects.filter(course=self.course).reverse()
+        if self == course_parts[0]:
+            return True
+        else:
+            return False
+
 class CourseTaken(models.Model):
     user = models.ForeignKey(User, related_name='course_takens_user')
     course = models.ForeignKey(Course, related_name='course_takens')
@@ -82,7 +99,7 @@ class CourseTaken(models.Model):
                 # ambil part yang terakhir dikerjain
                 return course_parts[total-1]
         else:
-            course_parts[0]
+            return None
 
 class Quiz(models.Model):
     course = models.OneToOneField(Course, related_name='quiz')
@@ -119,7 +136,7 @@ class QuizPart(models.Model):
             return None
 
 class QuizTaken(models.Model):
-    user = models.OneToOneField(User, related_name='quiz_taken')
+    user = models.ForeignKey(User, related_name='quiz_taken')
     quiz = models.ForeignKey(Quiz, related_name='quiz_takens')
     quiz_part_is_true = models.ManyToManyField(QuizPart, related_name='quiz_takens_is_true',  blank=True)
     quiz_part_is_false = models.ManyToManyField(QuizPart, related_name='quiz_takens_is_false',  blank=True)

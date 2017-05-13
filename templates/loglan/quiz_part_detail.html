@@ -10,6 +10,7 @@
   </div>
 
   <form  method="POST">{% csrf_token %}
+
   <div class="row yoga-panel-pilihan-kuis">
     <div class="row yoga-pilihan-ganda">
 
@@ -18,13 +19,11 @@
       <div class="col-md-6">
         {% for answer in quiz_part.quiz_part_answers.all %}
         <div id="yoga-pilihan">
-          <div type="button" class="btn btn-default yoga-button-pilihan-ganda" id="yoga-pilihan-ganda">
-            <div class="row" id="yoga-row-radio-pilihan-ganda">
-              <input type="radio" class="yoga-radio-pilihan" name="piljan" value="{{answer.id}}" autocomplete="off">
-                {{answer.text_answer}}
-              </input>
-            </div>
-          </div>
+          <label type="button" class="btn btn-default yoga-button-pilihan-ganda" id="yoga-pilihan-ganda">
+            <input id="yoga-radio-pilihan-ganda" type="radio" name="ChoiceAnswer" value="{{answer.id}}">
+              {{answer.text_answer}}
+            </input>
+          </label>
         </div>
         {% endfor %}
       </div>

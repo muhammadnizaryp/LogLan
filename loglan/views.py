@@ -112,7 +112,7 @@ def quiz_part_detail_view(request, course_slug, number_part_quiz):
     )
 
     if request.method == "POST":
-        jawaban_id = int(request.POST.get("piljan"))
+        jawaban_id = int(request.POST.get("ChoiceAnswer"))
         jawaban = QuizPartAnswer.objects.get(id=jawaban_id)
         print(jawaban_id)
         if quiz_part.quiz_answer_key.id == jawaban_id:
@@ -138,9 +138,6 @@ def course_part_detail_view(request, course_slug, number_part_course):
         course=course_part.course
     )
 
-    if created:
-        course_taken.course_part.add(course.course_parts.all()[0])
-
     context = {}
     context['course_part'] = course_part
     return render(request, "loglan/course_part_detail.html", context )
@@ -153,6 +150,7 @@ def course_part_list_view(request, course_slug):
         user=request.user,
         course=course
     )
+
     if created:
         course_taken.course_part.add(course.course_parts.all()[0])
 
@@ -187,6 +185,8 @@ def cek_jawaban(request):
             hasil_jawaban = "Kode program Anda benar"
             course_taken = CourseTaken.objects.get(user=request.user, course=soal.course)
             course_taken.course_part.add(soal)
+            if soal.is_last_course_part():
+                course_taken.is_done = True
             course_taken.save()
 
         else:

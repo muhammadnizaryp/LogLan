@@ -17,6 +17,14 @@ p a{
 
 .yoga-a-gambar{
   color: white;
+  text-decoration: none;
+}
+
+.yoga-a-gambar:hover,
+.yoga-a-gambar:focus,
+.yoga-a-gambar:active{
+  text-decoration: none;
+  color: #435560;
 }
 
 .yoga-text-white{
@@ -33,7 +41,7 @@ p a{
 #yoga-menu-navbar-kanan:focus,
 #yoga-menu-navbar-kanan:active{
   text-decoration: none;
-  color: #23527C;
+  color: #435560;
 }
 
 #yoga-menu-course:first-child{
@@ -67,7 +75,7 @@ p a{
 }
 
 #yoga-teks-selamat-datang{
-  font-size: 67px;
+  font-size: 60px;
   margin-left: 8px;
   color: white;
 }
@@ -82,8 +90,6 @@ p a{
   color: #E9EAEA;
   font-size: 23px;
   margin-top: 40px;
-  margin-left: 250px;
-  margin-right: 20px;
 }
 
 #yoga-navbar-atas{
@@ -136,6 +142,60 @@ p a{
 #yoga-button-belajar:hover,
 #yoga-button-belajar:focus,
 #yoga-button-belajar:active{
+  background-color: #46C9B6;
+  border-color: #46C9B6;
+}
+
+#yoga-button-akun{
+  background-color: #008080;
+  border-color: #008080;
+  border-radius: 0;
+  color: white;
+  font-size: 20px;
+  width: 100%;
+  height: 100%;
+  margin-top: 20px;
+}
+
+#yoga-button-akun:hover,
+#yoga-button-akun:focus,
+#yoga-button-akun:active{
+  background-color: #46C9B6;
+  border-color: #46C9B6;
+}
+
+#yoga-button-materi{
+  background-color: #008080;
+  border-color: #008080;
+  border-radius: 0;
+  color: white;
+  font-size: 20px;
+  width: 379px;
+  height: 100%;
+  margin-left: -15px;
+}
+
+#yoga-button-materi:hover,
+#yoga-button-materi:focus,
+#yoga-button-materi:active{
+  background-color: #46C9B6;
+  border-color: #46C9B6;
+}
+
+#yoga-button-kuis{
+  background-color: #008080;
+  border-color: #008080;
+  border-radius: 0;
+  color: white;
+  font-size: 20px;
+  width: 379px;
+  height: 100%;
+  margin-left: -14px;
+}
+
+#yoga-button-kuis:hover,
+#yoga-button-kuis:focus,
+#yoga-button-kuis:active{
   background-color: #46C9B6;
   border-color: #46C9B6;
 }
@@ -202,8 +262,7 @@ p a{
 #yoga-panel-selamat-datang-biru-tua{
   background-color: #354551;
   width: 100%;
-  height: 420px;
-  margin-top: 50px;
+  height: 350px;
 }
 
 #yoga-panel-selamat-datang-abu-abu{
@@ -235,10 +294,11 @@ p a{
   margin: 40px 0;
 }
 
-.yoga-panel{
-  background-color: #435560;
-  border-radius: 0;
-  margin-top: 100px;
+.yoga-panel {
+    background-color: #435560;
+    border-radius: 0%;
+    opacity: 0.7;
+    filter: alpha(opacity=50);
 }
 
 .yoga-panel-mulai-belajar-abu-abu{
@@ -444,6 +504,13 @@ p a{
   margin-top: -20px;
 }
 
+.yoga-background-akun{
+  background-color: #354551;
+  min-height: 783px;
+  margin-top: -20px;
+  width: 100%;
+}
+
 .yoga-background-bantuan{
   background-color: #354551;
   width: 100%;
@@ -460,12 +527,17 @@ p a{
   color: white;
 }
 
-.yoga-radio-pilihan{
-  visibility:hidden;
+.yoga-background-list-materi{
+  background-color: #354551;
+  margin-top: -20px;
+  width: 100%;
+  min-height: 783px;
+  color: white;
 }
 
-#yoga-row-radio-pilihan-ganda{
-  margin: 30px 0;
+#yoga-radio-pilihan-ganda{
+  margin: 30px 0px;
+  visibility: hidden;
 }
 
 #yoga-jumlah-poin-course-user{
@@ -477,68 +549,22 @@ p a{
   margin-left: 55px;
   border-radius: 1%;
 }
-/*================================================================= carousel ====================================================================*/
 
-/*.carousel-control.left
-{
-  background: none;
-}
-.carousel-control.right
-{
-  background: none;
+.yoga-keterangan-masuk{
+  color: white;
+  font-size: 25px;
+  margin-bottom: 30px;
 }
 
-.carousel-control
-{
-  position: absolute;
-  top: 45%;
-  bottom: 0;
-  left: 0;
-  width: 15%;
-  font-size: auto;
-  color: #fff;
-  text-align: center;
-  opacity: 1;
-  text-shadow: none;
+.yoga-keterangan-daftar-masuk{
+  color: #46C9B6;
+  text-decoration: none;
 }
-.carousel-control:hover
-{
-  color: #000;
+
+.yoga-keterangan-daftar-masuk:hover,
+.yoga-keterangan-daftar-masuk:focus,
+.yoga-keterangan-daftar-masuk:active{
+  background-color: #008080;
+  border-color: #008080;
+  text-decoration: none;
 }
-.carousel-indicators
-{
-  bottom: -50px;
-}
-.carousel-indicators li
-{
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  margin: 1px;
-  text-indent: -999px;
-  cursor: pointer;
-  background-color: #000\9;
-  background-color: rgba(0,0,0,0);
-  border: 1px solid #16a085;
-  border-radius: 50%;
-}
-.carousel-indicators .active
-{
-  width: 12px;
-  height: 12px;
-  margin: 0;
-  background-color: #16a085;
-}
-.carousel-caption
-{
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 10;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  color: #fff;
-  text-align: center;
-  background: rgba(0,0,0,0.4);
-}*/

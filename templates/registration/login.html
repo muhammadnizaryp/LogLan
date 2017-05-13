@@ -7,38 +7,53 @@
   {% endif %}
 </script>
 
-<div class="container yoga-minimal-tinggi-halaman">
-  <div class="row">
+<div class="container yoga-background-akun">
 
-    <div class="col-md-4"></div>
+  <div class="col-md-2"></div>
 
-    <div class="col-md-4 col-sm-4 col-xs-12">
-      <div class="panel panel-default yoga-panel">
-        <div class="panel-body">
-          <form action="" method="POST">{% csrf_token %}
-            <div class="form-group text-center">
-              <h3 class=yoga-panel-title>Log-Lan</h3>
-              {{ form.non_field_errors }}
-            </div>
-            <div class="form-group">
-              {% for field in form %}
-              {{ field.label_tag}}
-              {{ field }}
-              {% endfor %}
-            </div>
-            <div class="form-group text-center">
-              <button type="submit" name="login" class="btn btn-default yoga-button-transparent">Masuk</button>
-            </div>
-            <!-- <div class="form-group text-center yoga-text-white">
+  <div class="col-md-4"></div>
+
+  <div class="col-md-4 col-sm-4 col-xs-12">
+    <div style="margin-top:200px;">
+      <div class="row">
+        <div class="text-center">
+          <h4 class="yoga-keterangan-masuk">Masuk untuk mulai belajar</h4>
+        </div>
+        <div class="panel panel-default yoga-panel">
+          <div class="panel-body">
+            <form action="" method="POST">{% csrf_token %}
+              <div>
+                {% for field in form %}
+                <div style="margin-top: 10px; color:white;">
+                  {{ field.label_tag|escape }}
+                  {{ field }}
+                </div>
+                {% endfor %}
+              </div>
+              <div class="text-center">
+                <button type="submit" name="login" class="btn btn-default" id="yoga-button-akun">Masuk</button>
+              </div>
+              <!-- <div class="form-group text-center yoga-text-white">
               <a href="" id="yoga-lupa-kata-sandi">Lupa kata sandi ?</a>
-            </div> -->
-          </form>
+              </div> -->
+            </form>
+          </div>
+        </div>
+        <div class="text-center">
+          <a href="{% url 'loglan:signup' %}" class="yoga-keterangan-daftar-masuk">
+            <h4>Belum daftar ?</h4>
+          </a>
         </div>
       </div>
+      <div class="row">
+        {% for error in form.non_field_errors %}
+        <h4 style="color:#CF000F;">{{ error|escape }}</h4>
+        {% endfor %}
+      </div>
     </div>
-
-    <div class="col-md-4"></div>
-
   </div>
+
+  <div class="col-md-2"></div>
+
 </div>
 {% endblock %}

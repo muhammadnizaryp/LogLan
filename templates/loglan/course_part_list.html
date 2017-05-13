@@ -4,9 +4,9 @@
 
 {% block content %}
 
-<div class="container-fluid yoga-minimal-tinggi-halaman">
+<div class="container-fluid yoga-background-list-materi">
 
-  <div class="row yoga-background-biru-tua" id="yoga-row-pertama-course" >
+  <div class="row">
     <div class="col-md-6" id="yoga-jarak-menu-course">
       <div class="col-md-4">
         {% last_taken_part request.user course as last_part %}
@@ -27,10 +27,6 @@
 
         <div class="row" id="yoga-row-pertama-peringkat">
           <h2 id="yoga-judul-peringkat">Daftar Materi Python {{course.course_name}}</h2>
-        </div>
-
-        <div class="row text-right">
-          <h4>Progres Anda 1/10</h4>
         </div>
 
         <div class="row" id="yoga-tabel-peringkat">
@@ -69,7 +65,7 @@
               </a>
             </div>
             <div class="col-md-4">
-              {{ course_part.course_point }}
+              + {{ course_part.course_point }}
             </div>
             <div class="col-md-2 symbol-{% part_lock request.user course_part %}">
               <i class="fa"></i>

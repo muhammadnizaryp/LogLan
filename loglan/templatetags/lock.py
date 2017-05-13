@@ -13,7 +13,7 @@ def part_lock(user, course_part):
     if course_part == course_part.course.course_parts.all()[0]:
         return 'unlocked'
     # cek pernah ngerjain coursenya belum
-    elif not course_taken:
+    elif not course_taken.last_taken_part():
         # kalau belum ngerjain coursenya brarti dilock
         return 'locked'
     else:
@@ -26,6 +26,17 @@ def part_lock(user, course_part):
                 return 'unlocked'
             else:
                 return 'locked'
+
+@register.simple_tag
+def last_part_lock(user, course_part):
+    course_taken = CourseTaken.objects.get(
+        user=user,
+        course=course_part.course
+    )
+    if course_part in course_taken.course_part.all():
+        return 'unlocked'
+    else:
+        return 'locked'
 
 @register.simple_tag
 def quiz_lock(user, course):

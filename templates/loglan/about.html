@@ -10,11 +10,11 @@
 </script>
 
 <div class="container-fluid yoga-minimal-tinggi-halaman">
-  <div class="row">
+  <div class="row" style="margin-top:-20px;">
     <div id="yoga-panel-selamat-datang-biru-tua">
       <div class="col-md-6">
         <div class="col-md-4">
-          <img id="yoga-logo-selamat-datang" src="{% static 'image/logo1.png'%}" width="256"/>
+          <img id="yoga-logo-selamat-datang" src="{% static 'image/Logo1.png'%}" width="256"/>
         </div>
         <div class="col-md-8 text-left" id="yoga-col-selamat-datang">
           <h1 id="yoga-teks-selamat-datang">Selamat Datang</h1>
@@ -22,8 +22,16 @@
         </div>
       </div>
       <div class="col-md-6">
-        <p id="yoga-teks-penjelasan-loglan" class="text-center">Log-Lan (Logarithm-Language) adalah sebuah e-learning bahasa pemrograman python berbasis Gamification.</p>
-        <p id="yoga-teks-penjelasan-loglan" class="text-center">E-learning ini menyediakan beberapa fitur yaitu memilih level belajar, materi dalam bentuk pemrograman interaktif, kuis dalam bentuk pilihan ganda, tantangan untuk <i>un-lock</i> materi dan kuis, serta poin user untuk meningkatkan rangking.</p>
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <p id="yoga-teks-penjelasan-loglan" class="text-center">Log-Lan (Logarithm-Language) adalah sebuah e-learning bahasa pemrograman python berbasis Gamification, menyediakan fitur level belajar, materi pemrograman interaktif, kuis pilihan ganda, tantangan <i>un-lock</i> materi dan kuis, poin user untuk meningkatkan rangking.</p>
+          <div class="text-center">
+            <a href="{% url 'loglan:login' %}"
+              <button class="btn btn-default" id="yoga-button-akun">Mulai Belajar</button>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-2"></div>
       </div>
     </div>
   </div>
@@ -33,5 +41,30 @@
 
     </div>
   </div>
+
+  <div class="row">
+    <div id="yoga-panel-selamat-datang-abu-abu">
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div id="yoga-panel-selamat-datang-abu-abu">
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div id="yoga-panel-selamat-datang-abu-abu">
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div id="yoga-panel-selamat-datang-abu-abu">
+
+    </div>
+  </div>
+
 </div>
 {% endblock %}

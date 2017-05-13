@@ -6,21 +6,22 @@ register = template.Library()
 
 @register.assignment_tag
 def last_taken_part(user, course):
-    course_taken, created = CourseTaken.objects.get_or_create(
-        user=user,
-        course=course
-    )
-    if created:
-        course_taken.course_part.add(course.course_parts.all()[0])
-
     try:
-        if course_taken.last_taken_part():
+        course_taken = CourseTaken.objects.get(
+            user=user,
+            course=course
+        )
+        total = course_taken.course_part.all().count()
+        # cek kalau part terakhir ngga usah di next
+        if course_taken.last_taken_part().number == total:
+            return course_taken.last_taken_part()
+        elif course_taken.last_taken_part():
             return course_taken.last_taken_part().next_part()
         else:
             return course_taken.course.course_parts.all()[0]
 
-    except ObjectDoesNotExist:
-        return course_taken.course.course_parts.all()[0]
+    except:
+        return course.course_parts.all()[0]
 
 @register.simple_tag
 def user_course_point_per_level(user, course_id):

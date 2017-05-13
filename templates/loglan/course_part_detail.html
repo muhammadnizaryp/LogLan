@@ -51,7 +51,11 @@ function cek_jawaban() {
         console.log(json);
         console.log("success cek jawaban");
         if (json.hasil_jawaban=="Kode program Anda benar"){
+          {% if course_part.next_part %}
             $('#button-next').replaceWith('<a id="button-next" href="{% url 'loglan:course_part_detail' course_slug=course_part.course.course_slug number_part_course=course_part.next_part.number%}" class="{% part_lock request.user course_part %}"><button type="button" class="btn btn-default" id="yoga-button-belajar">Selanjutnya</button></a>');
+          {% else %}
+           $('#button-result').replaceWith('<a href="{% url 'loglan:course_part_result' course_slug=course_part.course.course_slug %}"><button type="button" class="btn btn-default" id="yoga-button-belajar">Lihat hasil belajar</button></a>')
+          {% endif %}
         }
       },
       error : function(xhr,errmsg,err) {
@@ -137,11 +141,11 @@ function cek_jawaban() {
         <div class="col-md-6">
           <div class="text-right">
             {% if course_part.next_part %}
-              <a id="button-next" href="{% url 'loglan:course_part_detail' course_slug=course_part.course.course_slug number_part_course=course_part.next_part.number%}" class="{% part_lock request.user course_part %}">
+              <a id="button-next" href="{% url 'loglan:course_part_detail' course_slug=course_part.course.course_slug number_part_course=course_part.next_part.number%}" class="{% part_lock request.user course_part.next_part %}">
                 <button type="button" class="btn btn-default" id="yoga-button-belajar">Selanjutnya</button>
               </a>
             {% else%}
-              <a href="{% url 'loglan:course_part_result' course_slug=course_part.course.course_slug %}">
+              <a id="button-result" href="{% url 'loglan:course_part_result' course_slug=course_part.course.course_slug %}" class="{% last_part_lock request.user course_part %}">
                 <button type="button" class="btn btn-default" id="yoga-button-belajar">Lihat hasil belajar</button>
               </a>
             {% endif %}
