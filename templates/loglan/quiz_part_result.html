@@ -1,0 +1,42 @@
+{% extends 'loglan/header_footer.html' %}
+
+{% block content %}
+
+<div class="yoga-background-rangking">
+
+  <div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+      <div class="col-md-6 text-center">
+        {{ quiz_taken.quiz_part_is_true.count }}
+      </div>
+      <div class="col-md-6 text-center">
+        {{ quiz_taken.quiz_part_is_completed.count }}
+      </div>
+    </div>
+    <div class="col-md-4">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4">
+        <div class="text-center">
+          <a href="{% url 'loglan:quiz_part_retake' quiz_taken.quiz.course.course_slug %}" name="course" class="btn btn-default" id="yoga-button-belajar">Coba Kuis Kembali</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+      </div>
+    </div>
+    <div class="col-md-4">
+    </div>
+
+  </div>
+
+</div>
+{% endblock %}

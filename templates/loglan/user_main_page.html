@@ -4,6 +4,8 @@
 
 {% load course %}
 
+{% load quiz %}
+
 {% block content %}
 
 <script>
@@ -63,10 +65,10 @@ window.location = "{% url 'loglan:login' %}";
           {{request.user.username}}
         </div>
         <div class="col-md-4">
-
+          {{request.user.user_profile.user_point_total}}
         </div>
         <div class="col-md-4">
-
+          {{ request.user.user_profile.user_ranking }}
         </div>
       </div>
     </div>
@@ -99,7 +101,7 @@ window.location = "{% url 'loglan:login' %}";
           Kuis
         </div>
         <div class="col-md-8 text-center yoga-isi-progres">
-          poin
+          {% user_quiz_point_per_level request.user course_taken.course.quiz.id %} poin
         </div>
         <div class="col-md-2"></div>
       </div>

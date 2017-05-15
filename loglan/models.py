@@ -4,8 +4,15 @@ import datetime
 
 # Create your models here.
 
+class UserProfileManager(models.Manager):
+    def get_user_rangking(self):
+        all_user = UserProfile.objects.all()
+        return sorted(all_user, key=lambda user_profile:user_profile.user_point_total(), reverse=True)
+
 class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name="user_profile")
+    objects = models.Manager()
+    user_profile_manager = UserProfileManager()
 
     def __str__(self):
         return self.user.username
@@ -25,6 +32,15 @@ class UserProfile(models.Model):
             for quiz_part_is_true in quiz_taken.quiz_part_is_true.all():
                 point += quiz_part_is_true.quiz_point
         return point
+
+    def user_point_total(self):
+        point = 0
+        user_point_total = self.user_course_point() + self.user_quiz_point()
+        return user_point_total
+
+    def user_ranking(self):
+        rankings = list(UserProfile.user_profile_manager.get_user_rangking())
+        return rankings.index(self) + 1
 
 
 class UserActivationKey(models.Model):
@@ -53,10 +69,10 @@ class CoursePart(models.Model):
     course_point = models.IntegerField()
 
     class Meta:
-        ordering = ('number', )
+        ordering = ( 'course', 'number')
 
     def __str__(self):
-        return self.course_part_name
+        return '{} - [{}] {}'.format(self.course.course_name, self.number, self.course_part_name)
 
     def next_part(self):
         course_parts = CoursePart.objects.filter(course=self.course)
@@ -75,7 +91,6 @@ class CoursePart(models.Model):
             return None
 
     def is_last_course_part(self):
-        # dibalik dari nomer gede ke kecil
         course_parts = CoursePart.objects.filter(course=self.course).reverse()
         if self == course_parts[0]:
             return True
@@ -113,7 +128,7 @@ class QuizPartAnswer(models.Model):
     image_answer = models.ImageField(blank=True, null=True)
 
     def __str__(self):
-         return self.text_answer
+        return '{} - {}'.format(self.text_answer, self.quiz_part.quiz_part_name)
 
 class QuizPart(models.Model):
     number = models.IntegerField(null=True)
@@ -121,11 +136,14 @@ class QuizPart(models.Model):
     course_part = models.ForeignKey(CoursePart, related_name='quiz_parts_course')
     quiz_part_name = models.CharField(max_length=30)
     quiz_content = models.TextField()
-    quiz_answer_key = models.ForeignKey(QuizPartAnswer, related_name='quiz_parts_answer_key')
+    quiz_answer_key = models.ForeignKey(QuizPartAnswer, related_name='quiz_parts_answer_key', null=True, blank=True)
     quiz_point = models.IntegerField()
 
+    class Meta:
+        ordering = ( 'quiz', 'number')
+
     def __str__(self):
-        return self.quiz_part_name
+        return '[{}] {} - {}'.format(self.number, self.quiz_part_name, self.quiz.course.course_name)
 
     def next_quiz(self):
         quiz_part = QuizPart.objects.filter(quiz=self.quiz)
@@ -134,6 +152,21 @@ class QuizPart(models.Model):
             return next_quiz
         except IndexError:
             return None
+
+    def previous_quiz(self):
+        quiz_part = QuizPart.objects.filter(quiz=self.quiz)
+        try:
+            previous_quiz = quiz_part.filter(number__lt=self.number).order_by('-number')[0]
+            return previous_quiz
+        except IndexError:
+            return None
+
+    def is_last_quiz_part(self):
+        quiz_parts = QuizPart.objects.filter(quiz=self.quiz).reverse()
+        if self == quiz_parts[0]:
+            return True
+        else:
+            return False
 
 class QuizTaken(models.Model):
     user = models.ForeignKey(User, related_name='quiz_taken')
@@ -144,3 +177,12 @@ class QuizTaken(models.Model):
 
     def __str__(self):
         return self.user.username
+
+    def last_taken_quiz(self):
+        quiz_parts_is_completed = self.quiz_part_is_completed.all()
+        total = quiz_parts_is_completed.count()
+        if quiz_parts_is_completed:
+            if total>=1:
+                return quiz_parts_is_completed[total-1]
+        else:
+            return None

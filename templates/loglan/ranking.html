@@ -35,24 +35,27 @@
           <hr id="yoga-border-peringkat"></hr>
         </div>
       </div>
-
+      
       <div class="row">
+        {% for user_profile in user_rankings %}
         <div class="row">
           <div class="col-md-2">
-            1
+            {{ user_profile.user_ranking }}
           </div>
           <div class="col-md-6">
-            yoga
+            {{user_profile.user.username}}
           </div>
           <div class-"col-md-4">
-            <h6>100 poin</h6>
+            <h6>{{ user_profile.user_point_total }} poin</h6>
           </div>
         </div>
         <div class="row">
           <hr id="yoga-border-peringkat"></hr>
         </div>
+        {% endfor %}
       </div>
     </div>
+
   </div>
 
   <div class="col-md-2"></div>

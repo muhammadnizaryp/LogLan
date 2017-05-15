@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 import hashlib, datetime, random
 import hashlib
 import json
-from .models import UserActivationKey, Course, CoursePart, QuizPart, CourseTaken, QuizTaken, QuizPartAnswer
+from .models import UserActivationKey, Course, CoursePart, QuizPart, CourseTaken, QuizTaken, QuizPartAnswer, UserProfile
 from django.core.mail import send_mail
 from django.utils import timezone
 from django.conf import settings
@@ -82,7 +82,11 @@ def help_view(request):
     return render(request, "loglan/help.html")
 
 def ranking_view(request):
-    return render(request, "loglan/ranking.html")
+    context = {}
+    user_profiles = UserProfile.objects.all()
+    user_rankings = UserProfile.user_profile_manager.get_user_rangking()
+    context['user_rankings'] = user_rankings
+    return render(request, "loglan/ranking.html", context)
 
 def home_view(request):
     return render(request, "loglan/about.html")
@@ -103,13 +107,27 @@ def choose_level_view(request):
 
 
 def quiz_part_detail_view(request, course_slug, number_part_quiz):
-
     quiz_part = QuizPart.objects.get(number=number_part_quiz, quiz__course__course_slug = course_slug)
 
     quiz_taken, created = QuizTaken.objects.get_or_create(
         user=request.user,
         quiz=quiz_part.quiz
     )
+    try:
+        if number_part_quiz != '1' and (quiz_part.previous_quiz() != quiz_taken.last_taken_quiz()):
+            if quiz_taken.last_taken_quiz():
+                return HttpResponseRedirect('/quiz/{}/{}/'.format(course_slug, quiz_taken.last_taken_quiz().next_quiz().number))
+            else:
+                return HttpResponseRedirect('/quiz/{}/{}/'.format(course_slug, 1))
+        else:
+            if quiz_part in quiz_taken.quiz_part_is_completed.all():
+                return HttpResponseRedirect('/quiz/{}/{}/'.format(course_slug, quiz_taken.last_taken_quiz().next_quiz().number))
+    except:
+        return HttpResponseRedirect('/quiz/{}/result'.format(course_slug))
+
+
+    # kalau nomor quiz 1, quiz_part_is_true sama false harus dikosongin
+    # if number_part_quiz == 1:
 
     if request.method == "POST":
         jawaban_id = int(request.POST.get("ChoiceAnswer"))
@@ -121,11 +139,36 @@ def quiz_part_detail_view(request, course_slug, number_part_quiz):
         else:
             pass
             quiz_taken.quiz_part_is_false.add(quiz_part)
-        return HttpResponseRedirect('/quiz/{}/{}/'.format(course_slug, quiz_part.next_quiz().number))
+        quiz_taken.quiz_part_is_completed.add(quiz_part)
+        if quiz_part.is_last_quiz_part():
+            return HttpResponseRedirect('/quiz/{}/result'.format(course_slug))
+        else:
+            return HttpResponseRedirect('/quiz/{}/{}/'.format(course_slug, quiz_part.next_quiz().number))
 
     context = {}
     context['quiz_part'] = quiz_part
     return render(request, "loglan/quiz_part_detail.html", context)
+
+def quiz_part_result_view(request, course_slug):
+    quiz_taken, created = QuizTaken.objects.get_or_create(
+        user=request.user,
+        quiz__course__course_slug=course_slug
+    )
+    context = {'quiz_taken': quiz_taken}
+    return render(request, "loglan/quiz_part_result.html", context )
+
+def quiz_part_retake_view(request, course_slug):
+    # context = {}
+    # context [''] =
+    quiz_taken, created = QuizTaken.objects.get_or_create(
+        user=request.user,
+        quiz__course__course_slug=course_slug
+    )
+    quiz_taken.quiz_part_is_true.clear()
+    quiz_taken.quiz_part_is_false.clear()
+    quiz_taken.quiz_part_is_completed.clear()
+
+    return HttpResponseRedirect('/quiz/{}/{}/'.format(course_slug, 1))
 
 
 def course_part_detail_view(request, course_slug, number_part_course):
@@ -137,6 +180,12 @@ def course_part_detail_view(request, course_slug, number_part_course):
         user=request.user,
         course=course_part.course
     )
+
+    if number_part_course != '1' and (course_part.previous_part() not in course_taken.course_part.all()):
+        if course_taken.last_taken_part():
+            return HttpResponseRedirect('/course/{}/{}/'.format(course_slug, course_taken.last_taken_part().next_part().number))
+        else:
+            return HttpResponseRedirect('/course/{}/{}/'.format(course_slug, 1))
 
     context = {}
     context['course_part'] = course_part

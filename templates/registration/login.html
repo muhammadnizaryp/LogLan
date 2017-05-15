@@ -9,8 +9,6 @@
 
 <div class="container yoga-background-akun">
 
-  <div class="col-md-2"></div>
-
   <div class="col-md-4"></div>
 
   <div class="col-md-4 col-sm-4 col-xs-12">
@@ -33,16 +31,20 @@
               <div class="text-center">
                 <button type="submit" name="login" class="btn btn-default" id="yoga-button-akun">Masuk</button>
               </div>
-              <!-- <div class="form-group text-center yoga-text-white">
-              <a href="" id="yoga-lupa-kata-sandi">Lupa kata sandi ?</a>
-              </div> -->
             </form>
           </div>
         </div>
         <div class="text-center">
-          <a href="{% url 'loglan:signup' %}" class="yoga-keterangan-daftar-masuk">
-            <h4>Belum daftar ?</h4>
-          </a>
+          <div class="col-md-6">
+            <a href="{% url 'loglan:signup' %}" class="yoga-keterangan-daftar-masuk">
+              <h4>Belum daftar ?</h4>
+            </a>
+          </div>
+          <div class="col-md-6">
+            <a href="{% url 'loglan:password_reset' %}" class="yoga-keterangan-daftar-masuk">
+              <h4>Lupa password ?</h4>
+            </a>
+          </div>
         </div>
       </div>
       <div class="row">
@@ -53,7 +55,7 @@
     </div>
   </div>
 
-  <div class="col-md-2"></div>
+  <div class="col-md-4"></div>
 
 </div>
 {% endblock %}

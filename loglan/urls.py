@@ -2,6 +2,7 @@ from django.conf.urls import url
 from . import views
 from .forms import login_form
 from django.contrib.auth.views import login
+from django.contrib.auth import views as auth_views
 
 urlpatterns=[
         url(r'^$', views.home_view, name='home'),
@@ -11,6 +12,10 @@ urlpatterns=[
         url(r'^account/confirmed/$', views.account_confirmed_view, name='account_confirmed'),
         url(r'^account/expired/$', views.account_expired_view, name='account_expired'),
         url(r'^login/$', login, name='login', kwargs={"authentication_form": login_form}),
+        url(r'^password_reset/$', auth_views.password_reset, name='password_reset'),
+        url(r'^password_reset/done/$', auth_views.password_reset_done, name='password_reset_done'),
+        url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', auth_views.password_reset_confirm, name='password_reset_confirm'),
+        url(r'^reset/done/$', auth_views.password_reset_complete, name='password_reset_complete'),
         url(r'^help/$', views.help_view, name='help'),
         url(r'^ranking/$', views.ranking_view, name='ranking'),
         url(r'^logout/$', views.logout_view, name='logout'),
@@ -20,5 +25,7 @@ urlpatterns=[
         url(r'^course/(?P<course_slug>[\w-]+)/part-list/$', views.course_part_list_view, name='course_part_list'),
         url(r'^course/(?P<course_slug>[\w-]+)/part-result/$', views.course_part_result_view, name='course_part_result'),
         url(r'^quiz/(?P<course_slug>[\w-]+)/(?P<number_part_quiz>[0-9]+)/$', views.quiz_part_detail_view, name='quiz_part_detail'),
+        url(r'^quiz/(?P<course_slug>[\w-]+)/result/$', views.quiz_part_result_view, name='quiz_part_result'),
+        url(r'^quiz/(?P<course_slug>[\w-]+)/retake/$', views.quiz_part_retake_view, name='quiz_part_retake'),
         url(r'^cek_jawaban/$', views.cek_jawaban, name='cek_jawaban'),
 ]

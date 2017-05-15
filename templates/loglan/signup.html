@@ -8,7 +8,6 @@
 </script>
 <div class="container yoga-background-akun">
   <div class="row">
-    <div class="col-md-2"></div>
 
     <div class="col-md-4"></div>
 
@@ -17,11 +16,20 @@
         <div class="panel panel-default yoga-panel">
           <div class="panel-body">
             <form method="POST" action=""> {% csrf_token %}
+              {% for field in form %}
+              <div class="fieldWrapper">
+
+      {{ field.errors }}
+      
+
+  </div>
+  {% endfor %}
               <div>
                 {% for field in form %}
                 <div style="margin-top: 10px; color:white;">
                   {{ field.label_tag|escape }}
                 </div>
+
                 {{ field }}
                 {% endfor %}
               </div>
@@ -39,7 +47,7 @@
       </div>
     </div>
 
-    <div class="col-md-2"></div>
+    <div class="col-md-4"></div>
 
   </div>
 </div>

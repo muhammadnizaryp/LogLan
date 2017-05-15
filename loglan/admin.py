@@ -41,11 +41,13 @@ admin.site.register(Quiz, QuizAdmin)
 class QuizPartAdmin(admin.ModelAdmin):
     list_display = ['number','quiz','course_part','quiz_part_name','quiz_content','quiz_answer_key','quiz_point']
     search_fields = ['quiz_part_name']
+    list_filter = ['quiz',]
     list_per_page = 25
 admin.site.register(QuizPart, QuizPartAdmin)
 
 class QuizPartAnswerAdmin(admin.ModelAdmin):
     list_display = ['quiz_part','text_answer','image_answer']
+    list_filter = ['quiz_part',]
     list_per_page = 25
 admin.site.register(QuizPartAnswer, QuizPartAnswerAdmin)
 

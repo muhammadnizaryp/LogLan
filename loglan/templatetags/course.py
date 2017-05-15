@@ -1,6 +1,5 @@
 from django import template
 from django.core.exceptions import ObjectDoesNotExist
-
 from ..models import CourseTaken, Course, CoursePart
 register = template.Library()
 
