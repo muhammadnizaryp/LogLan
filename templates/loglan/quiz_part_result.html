@@ -1,41 +1,85 @@
 {% extends 'loglan/header_footer.html' %}
 
+{% load quiz %}
+
 {% block content %}
 
-<div class="yoga-background-rangking">
+<div class="container-fluid yoga-background-rangking">
 
-  <div class="row">
-    <div class="col-md-4">
-    </div>
-    <div class="col-md-4">
-      <div class="col-md-6 text-center">
-        {{ quiz_taken.quiz_part_is_true.count }}
+
+  <div class="row yoga-row-pertama-hasil-kuis">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <div class="col-md-4 text-center">
+        <div class="yoga-kuis-benar">
+          <div class="row">
+            Benar
+          </div>
+          <div class="row">
+            {{ quiz_taken.quiz_part_is_true.count }}
+          </div>
+        </div>
       </div>
-      <div class="col-md-6 text-center">
-        {{ quiz_taken.quiz_part_is_completed.count }}
+      <div class="col-md-4 text-center">
+        <div class="yoga-kuis-salah">
+          <div class="row">
+            Salah
+          </div>
+          <div class="row">
+            {{ quiz_taken.quiz_part_is_false.count }}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 text-center">
+        <div class="yoga-jumlah-kuis">
+          <div class="row">
+            Jumlah Soal
+          </div>
+          <div class="row">
+            {{ quiz_taken.quiz_part_is_completed.count }}
+          </div>
+        </div>
       </div>
     </div>
-    <div class="col-md-4">
-    </div>
+    <div class="col-md-2"></div>
   </div>
 
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <hr id="yoga-border-hasil-kuis"></hr>
     </div>
-    <div class="col-md-4">
-      <div class="col-md-4">
+    <div class="col-md-2"></div>
+  </div>
+
+  <div class="row yoga-row-kedua-hasil-kuis">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 text-center">
+      <div class="row">
+        Anda Mendapat Poin
       </div>
-      <div class="col-md-4">
-        <div class="text-center">
-          <a href="{% url 'loglan:quiz_part_retake' quiz_taken.quiz.course.course_slug %}" name="course" class="btn btn-default" id="yoga-button-belajar">Coba Kuis Kembali</a>
+      <div class="row">
+        {% user_quiz_point_per_level request.user quiz_taken.quiz.id %} / {% user_quiz_point_should_be_achieved request.user quiz_taken.quiz.id %}
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="col-md-6 text-center">
+          <a href="{% url 'loglan:quiz_part_retake' quiz_taken.quiz.course.course_slug %}" class="btn btn-default" id="yoga-button-belajar">Coba Kuis Kembali</a>
+        </div>
+        <div class="col-md-6 text-center">
+          <a href="{% url 'loglan:choose_level' %}" class="btn btn-default" id="yoga-button-belajar">Pilih Level Belajar</a>
         </div>
       </div>
-      <div class="col-md-4">
-      </div>
+      <div class="col-md-1"></div>
     </div>
-    <div class="col-md-4">
-    </div>
-
+    <div class="col-md-3"></div>
   </div>
 
 </div>

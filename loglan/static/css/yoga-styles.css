@@ -568,3 +568,30 @@ p a{
   border-color: #008080;
   text-decoration: none;
 }
+
+.yoga-row-pertama-hasil-kuis{
+  margin-top: 150px;
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.yoga-row-kedua-hasil-kuis{
+  font-size: 50px;
+  margin-bottom: 100px;
+}
+
+.yoga-kuis-benar{
+  color: #46C9B6;
+}
+
+.yoga-kuis-salah{
+  color: #E35248;
+}
+
+.yoga-jumlah-kuis{
+  color: #22A7F0;
+}
+
+#yoga-border-hasil-kuis{
+  border-color: rgb(34, 167, 240);
+}

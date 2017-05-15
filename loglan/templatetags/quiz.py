@@ -10,3 +10,12 @@ def user_quiz_point_per_level(user, quiz_id):
     for quiz_part_is_true in quiz_taken.quiz_part_is_true.all():
         point += quiz_part_is_true.quiz_point
     return point
+
+@register.simple_tag
+def user_quiz_point_should_be_achieved(user, quiz_id):
+    point = 0
+    quiz = Quiz.objects.get(id=quiz_id)
+    quiz_taken, created = QuizTaken.objects.get_or_create(user=user, quiz=quiz)
+    for quiz_part_is_completed in quiz_taken.quiz_part_is_completed.all():
+        point += quiz_part_is_completed.quiz_point
+    return point
