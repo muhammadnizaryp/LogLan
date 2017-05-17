@@ -34,6 +34,9 @@ def signup_view(request):
             user_activation_key = UserActivationKey(user=user, activation_key=activation_key, key_expires=key_expires)
             user_activation_key.save()
 
+            user_profile = UserProfile(user=user)
+            user_profile.save()
+
             host=request.META['HTTP_HOST']
             email_subject = 'Account confirmation'
             email_body = "Hallo {}, Thanks for signing up. Wellcome to LogLan, web application e-learning platform to learn Python programming language,\

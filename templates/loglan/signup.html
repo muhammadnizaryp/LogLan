@@ -18,18 +18,14 @@
             <form method="POST" action=""> {% csrf_token %}
               {% for field in form %}
               <div class="fieldWrapper">
-
-      {{ field.errors }}
-      
-
-  </div>
-  {% endfor %}
+                {{ field.errors }}
+              </div>
+              {% endfor %}
               <div>
                 {% for field in form %}
                 <div style="margin-top: 10px; color:white;">
                   {{ field.label_tag|escape }}
                 </div>
-
                 {{ field }}
                 {% endfor %}
               </div>

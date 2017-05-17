@@ -100,10 +100,12 @@ window.location = "{% url 'loglan:login' %}";
         <div class="col-md-2 yoga-isi-progres">
           Kuis
         </div>
-        <div class="col-md-8 text-center yoga-isi-progres">
-          {% user_quiz_point_per_level request.user course_taken.course.quiz.id %} poin
+        <div class="col-md-5 text-center yoga-isi-progres">
+          <!-- {{ course_taken.user.quiz.quiz_taken.quiz_part_is_true.count }} -->
         </div>
-        <div class="col-md-2"></div>
+        <div class="col-md-5 text-left yoga-isi-progres">
+          {% user_quiz_point_per_level request.user course_taken.course.quiz.id %} / {% user_quiz_point_should_be_achieved request.user course_taken.course.quiz.id %} poin
+        </div>
       </div>
     </div>
 
