@@ -129,4 +129,4 @@ EMAIL_PORT = 587
 
 LOGIN_REDIRECT_URL = '/user-main-page'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

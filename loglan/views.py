@@ -14,6 +14,7 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib import messages
+from .gmail import send_mail_gmail
 
 # Create your views here.
 def home_view(request):
@@ -55,7 +56,9 @@ def signup_view(request):
             from_email = settings.EMAIL_HOST_USER
             to_email = [user.email, settings.EMAIL_HOST_USER]
 
-            send_mail(email_subject, email_body, from_email, to_email, fail_silently=False)
+            # send_mail(email_subject, email_body, from_email, to_email, fail_silently=False)
+            send_mail_gmail(email_subject, email_body, from_email, user.email)
+
 
             return HttpResponseRedirect('/sign-up/succes')
 

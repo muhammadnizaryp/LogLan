@@ -12,12 +12,7 @@ from oauth2client.file import Storage
 
 from elearning.settings import BASE_DIR
 
-
-try:
-    import argparse
-    flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
-except ImportError:
-    flags = None
+flags = None
 
 
 # If modifying these scopes, delete your previously saved credentials
@@ -109,6 +104,25 @@ def main():
     labels = results.get('labels', [])
 
     message = create_message('loglan.gc@gmail.com', 'muhammadnizaryp@gmail.com', 'test subject', '<h1>Ini judul</h1><p>test_message</p>')
+    send_message(service, 'me', message)
+
+    print('sent message')
+
+
+def send_mail_gmail(subject, message, from_email, to):
+    """Shows basic usage of the Gmail API.
+
+    Creates a Gmail API service object and outputs a list of label names
+    of the user's Gmail account.
+    """
+    credentials = get_credentials()
+    http = credentials.authorize(httplib2.Http())
+    service = discovery.build('gmail', 'v1', http=http)
+
+    results = service.users().labels().list(userId='me').execute()
+    labels = results.get('labels', [])
+
+    message = create_message(from_email, to, subject, message)
     send_message(service, 'me', message)
 
     print('sent message')
