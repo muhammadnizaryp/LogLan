@@ -13,8 +13,17 @@ from django.utils import timezone
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib import messages
 
 # Create your views here.
+def home_view(request):
+    return render(request, "loglan/home.html")
+
+def about_view(request):
+    return render(request, "loglan/about.html")
+
+def help_view(request):
+    return render(request, "loglan/help.html")
 
 def signup_view(request):
     if request.method == 'POST':
@@ -81,19 +90,12 @@ def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/login')
 
-def help_view(request):
-    return render(request, "loglan/help.html")
-
 def ranking_view(request):
     context = {}
     user_profiles = UserProfile.objects.all()
     user_rankings = UserProfile.user_profile_manager.get_user_rangking()
     context['user_rankings'] = user_rankings
     return render(request, "loglan/ranking.html", context)
-
-def home_view(request):
-    return render(request, "loglan/about.html")
-
 
 def user_main_page_view(request):
     context = {}

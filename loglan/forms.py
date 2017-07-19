@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordResetForm
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
@@ -25,7 +25,7 @@ class SignupForm(UserCreationForm):
         return email
 
 
-class login_form(AuthenticationForm):
+class LoginForm(AuthenticationForm):
     username = forms.CharField(label='Email', widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'email'}))
     password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'password'}))
 
@@ -34,4 +34,11 @@ class login_form(AuthenticationForm):
             self.cleaned_data["username"] = get_user_model().objects.get(email=self.data["username"])
         except ObjectDoesNotExist:
             self.cleaned_data["username"] = "a username that do not exists"
-        return super(login_form, self).clean()
+        return super(LoginForm, self).clean()
+
+class EmailConfirmationForm(PasswordResetForm):
+    email = forms.CharField(label='Email', widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'email'}))
+
+class reset_password_form(PasswordResetForm):
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'password'}))
+    password2 = forms.CharField(label='Re-Password', widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 're-password'}))

@@ -1,7 +1,46 @@
 {% extends 'loglan/header_footer.html' %}
 
+{% load course %}
 {% block content %}
+<div class="container-fluid yoga-background-hasil-belajar text-center">
+  <div class="yoga-text-selesai-materi">
+    <p>Selamat Anda telah menyelesaikan materi pembelejaran bahasa pemrograman python level {{course.course_name}}</p>
+  </div>
+  <div class="yoga-hasil-jumlah-materi">
+    <p>Jumlah materi yang Anda selesaikan</p>
+    <p>{{ course.course_takens.course_part.count }}</p>
+  </div>
 
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <hr id="yoga-border-hasil-kuis"></hr>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
 
+  <div class="yoga-hasil-poin-materi">
+    <p>Jumlah poin yang Anda dapatkan</p>
+    <p>{% user_course_point_per_level request.user course.id %}</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="col-md-6 text-center">
+          <a href="{% url 'loglan:course_part_list' course.course_slug %}" class="btn btn-default" id="yoga-button-belajar">Lihat Daftar Materi</a>
+        </div>
+        <div class="col-md-6 text-center">
+          <a href="{% url 'loglan:choose_level' %}" class="btn btn-default" id="yoga-button-belajar">Pilih Level Belajar</a>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+
+</div>
 
 {% endblock %}

@@ -8,6 +8,15 @@
 
 <script type="text/javascript">
 
+window.onload = function() {
+  window.editor = CodeMirror.fromTextArea(code, {
+    mode: "javascript",
+    lineNumbers: true,
+    lineWrapping: true,
+    theme : '3024-night'
+  });
+};
+
 function outf(text) {
   var mypre = document.getElementById("output");
   mypre.innerHTML = mypre.innerHTML + text;
@@ -164,6 +173,17 @@ function cek_jawaban() {
       event.preventDefault();
       alert('Silahkan mengerjakan part ini terlebih dahulu sampai benar.');
     });
+
+    // $(document).ready(function(){
+    //   var code = $("#yourcode")[0];
+    //   var editor = CodeMirror.fromTextArea(code, {
+    //     mode: "javascript",
+    //     lineNumbers: true,
+    //     lineWrapping: true,
+    //     theme : '3024-night'
+    //   });
+    // });
+
   </script>
 </div>
 

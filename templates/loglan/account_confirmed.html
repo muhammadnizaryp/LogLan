@@ -1,15 +1,9 @@
 {% extends 'loglan/header_footer.html' %}
 
 {% block content %}
-
-<div class="row">
-  <div class="container-fluid yoga-minimal-tinggi-halaman">
-    <div id="yoga-panel-tentang-daftar-biru-tua">
-      <div id="yoga-padding-sukses-daftar">
-      <h2>Konfirmasi akun Log-Lan Anda sudah berhasil dan sudah aktif, silahkah <a href="{% url 'loglan:login' %}">masuk</a> untuk mulai belajar.</h2>
-    </div>
-    </div>
+<div class="container-fluid yoga-background-akun">
+  <div class="text-center yoga-text-akun">
+    <p>Konfirmasi akun Log-Lan Anda sudah berhasil dan akun Anda sudah aktif, silahkah <a href="{% url 'loglan:login' %}">masuk</a> untuk mulai belajar.</p>
   </div>
 </div>
-
 {% endblock %}

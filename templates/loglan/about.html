@@ -1,7 +1,5 @@
 {% extends 'loglan/header_footer.html' %}
-
-{% load staticfiles %}
-
+{% load static %}
 {% block content %}
 <script>
   {% if user.is_authenticated %}
@@ -9,60 +7,65 @@
   {% endif %}
 </script>
 
-<div class="container-fluid yoga-minimal-tinggi-halaman">
-  <div class="row" style="margin-top:-20px;">
-    <div id="yoga-panel-selamat-datang-biru-tua">
-      <div class="col-md-6">
-        <div class="col-md-4">
-          <img id="yoga-logo-selamat-datang" src="{% static 'image/Logo1.png'%}" width="256"/>
-        </div>
-        <div class="col-md-8 text-left" id="yoga-col-selamat-datang">
-          <h1 id="yoga-teks-selamat-datang">Selamat Datang</h1>
-          <h1 id="yoga-teks-loglan">{ Log-Lan }</h1>
+<div class="container-fluid yoga-background-tentang">
+  <div style="margin-top: 30px;">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6 text-center yoga-judul-profil-pengembang">
+        <p>Tentang Log-Lan</p>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6 yoga-background-tentang-aplikasi">
+        <div style="padding: 25px; font-size: 20px; text-align: justify;">
+          <p>
+            Log-Lan adalah web aplikasi elearning bahasa pemrograman python, hasil pengembangan dari aplikasi sebelumnya, yaitu Be-Py.
+            Pengembangan difokuskan pada penambahan kedalaman materi pembelajaran dan penembahan beberapa fitur pendukung untuk menjadi
+            elearning berbasis <i>Gamification</i>, yaitu poin materi dan kuis, rangking user, <i>lock-unlock</i> materi dan kuis, level pembelajaran,
+            kuis pilihan ganda, informasi hasil belajar materi dan pengerjaan kuis.
+          </p>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-          <p id="yoga-teks-penjelasan-loglan" class="text-center">Log-Lan (Logarithm-Language) adalah sebuah e-learning bahasa pemrograman python berbasis Gamification, menyediakan fitur level belajar, materi pemrograman interaktif, kuis pilihan ganda, tantangan <i>un-lock</i> materi dan kuis, poin user untuk meningkatkan rangking.</p>
-          <div class="text-center">
-            <a href="{% url 'loglan:login' %}"
-              <button class="btn btn-default" id="yoga-button-akun">Mulai Belajar</button>
-            </a>
+      <div class="col-md-3"></div>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6 text-center yoga-judul-profil-pengembang">
+        <p>Tentang Pengambang</p>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6 yoga-background-profil-pengembang">
+        <div class="col-md-4 text-center">
+          <div class="row">
+            <div style="margin:25px 0px;">
+              <img src="{% static 'image/yoga.png'%}" class="img-circle" width="150" height="150"/>
+            </div>
+          </div>
+          <div class="row text-center">
+            <p>Muhammad Nizar Yoga Pratama</p>
           </div>
         </div>
-        <div class="col-md-2"></div>
+        <div class="col-md-8 text-center">
+          <div style="margin-top:25px;">
+            <p><i class="fa fa-map-marker" aria-hidden="true"></i> Jakarta, Indonesia</p>
+            <p>S1, Teknik Informatika, Universitas Gunadarma</p>
+            <p>(2013 - 2017)</p>
+          </div>
+          <div style="font-style:oblique; margin-top:30px;">
+            <p>"Seorang anak desa yang ingin menjadi orang sukses di kota besar, Jakarta."</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div id="yoga-panel-selamat-datang-abu-abu">
-
-    </div>
-  </div>
-
-  <div class="row">
-    <div id="yoga-panel-selamat-datang-abu-abu">
-
-    </div>
-  </div>
-
-  <div class="row">
-    <div id="yoga-panel-selamat-datang-abu-abu">
-
-    </div>
-  </div>
-
-  <div class="row">
-    <div id="yoga-panel-selamat-datang-abu-abu">
-
-    </div>
-  </div>
-
-  <div class="row">
-    <div id="yoga-panel-selamat-datang-abu-abu">
-
+      <div class="col-md-3"></div>
     </div>
   </div>
 
