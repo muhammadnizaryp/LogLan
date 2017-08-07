@@ -81,29 +81,29 @@ window.location = "{% url 'loglan:login' %}";
         {{course_taken.course.course_name}}
       </div>
       <div class="row yoga-panel-toska-progres-bar-halaman-user">
-        <div class="col-md-2 yoga-isi-progres">
+        <div class="col-md-3 text-center yoga-isi-progres">
           Materi
         </div>
-        <div class="col-md-8">
+        <div class="col-md-6">
           <div class="progress yoga-progres-bar-halaman-user">
             <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:{% user_course_progress_per_level request.user course_taken.course.id %}%">
               {% user_course_progress_per_level request.user course_taken.course.id %} %
             </div>
           </div>
         </div>
-        <div class="col-md-2 yoga-isi-progres text-center">
+        <div class="col-md-3 yoga-isi-progres text-center">
           {% user_course_point_per_level request.user course_taken.course.id %} poin
         </div>
       </div>
 
       <div class="row yoga-panel-toska-progres-bar-halaman-user">
-        <div class="col-md-2 yoga-isi-progres">
+        <div class="col-md-3  text-center yoga-isi-progres">
           Kuis
         </div>
-        <div class="col-md-5 text-center yoga-isi-progres">
+        <div class="col-md-6 text-center yoga-isi-progres">
           <!-- {{ course_taken.user.quiz.quiz_taken.quiz_part_is_true.count }} -->
         </div>
-        <div class="col-md-5 text-left yoga-isi-progres">
+        <div class="col-md-3 text-center yoga-isi-progres">
           {% user_quiz_point_per_level request.user course_taken.course.quiz.id %} / {% user_quiz_point_should_be_achieved request.user course_taken.course.quiz.id %} poin
         </div>
       </div>

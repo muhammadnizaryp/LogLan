@@ -71,24 +71,24 @@ p a{
 }
 
 #yoga-col-selamat-datang{
-  margin-top: 101px;
+  margin-top: 155px;
 }
 
 #yoga-teks-selamat-datang{
-  font-size: 60px;
-  margin-left: 8px;
+  font-size: 44px;
+  margin-left: 60px;
   color: white;
 }
 
 #yoga-teks-loglan{
-  font-size: 67px;
-  margin-left: 8px;
+  font-size: 44px;
+  margin-left: 60px;
   color: #008080;
 }
 
 #yoga-teks-penjelasan-loglan{
   color: #E9EAEA;
-  font-size: 23px;
+  font-size: 19px;
   margin-top: 40px;
 }
 
@@ -370,8 +370,8 @@ p a{
 
 .yoga-isi-progres{
   color: white;
-  font-size: 20px;
-  margin: 10px 0;
+  font-size: 15px;
+  margin: 14px 0;
 }
 
 .yoga-panel form input{
@@ -484,9 +484,10 @@ p a{
 }
 
 .yoga-panel-soal-kuis{
-  height: 200px;
-  color:white;
-  padding:40px;
+  height: 100px;
+  color: white;
+  margin-top: 50px;
+  margin-bottom: 35px;
 
 }
 
@@ -560,7 +561,7 @@ p a{
 
 .yoga-background-tentang-aplikasi{
   background-color: white;
-  height: 230px;
+  height: 275px;
 }
 
 .yoga-judul-profil-pengembang{
@@ -580,8 +581,6 @@ p a{
   background-color: #74ECFC;
   border-color: #74ECFC;
   color: #152B39;
-  margin-right: -55px;
-  margin-left: 55px;
   border-radius: 1%;
 }
 
@@ -611,7 +610,7 @@ p a{
 }
 
 .yoga-row-kedua-hasil-kuis{
-  font-size: 50px;
+  font-size: 40px;
   margin-bottom: 100px;
 }
 
