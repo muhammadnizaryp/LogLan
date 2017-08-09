@@ -17,13 +17,14 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
-from loglan.forms import EmailConfirmationForm, reset_password_form
+from loglan.forms import EmailConfirmationForm, SetPasswordForm
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'',include('loglan.urls', namespace='loglan')),
     url(r'^password_reset/$', auth_views.password_reset, name='password_reset', kwargs={"password_reset_form": EmailConfirmationForm}),
     url(r'^password_reset/done/$', auth_views.password_reset_done, name='password_reset_done'),
-    url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', auth_views.password_reset_confirm, name='password_reset_confirm',),
+    url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+        auth_views.password_reset_confirm, name='password_reset_confirm', kwargs={"set_password_form": SetPasswordForm}),
     url(r'^reset/done/$', auth_views.password_reset_complete, name='password_reset_complete'),
 ]

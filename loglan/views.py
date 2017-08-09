@@ -49,16 +49,17 @@ def signup_view(request):
 
             host=request.META['HTTP_HOST']
             email_subject = 'Account confirmation'
-            email_body = "Hallo {}, Thanks for signing up. Wellcome to LogLan, web application e-learning platform to learn Python programming language,\
-             this e-learning is deployed for research purpose. For activation your account, please click on the link below in less than 48 hours. \
-             http://{}/account/confirmation/{}".format(username, host, activation_key)
+            email_body = "Hai {}, Terimakasih sudah mendaftar.\
+            Selamat datang di LogLan, web aplikasi e-learning berbasis gamification untuk belajar bahasa pemrograman Python.\
+            Aplikasi ini dibuat untuk tujuan penelitian.\
+            Untuk aktifasi akun, silahkan kunjungi link dibawah dalam waktu kurang dari 48 jam.\
+            http://{}/account/confirmation/{}".format(username, host, activation_key)
 
             from_email = settings.EMAIL_HOST_USER
             to_email = [user.email, settings.EMAIL_HOST_USER]
 
             # send_mail(email_subject, email_body, from_email, to_email, fail_silently=False)
             send_mail_gmail(email_subject, email_body, from_email, user.email)
-
 
             return HttpResponseRedirect('/sign-up/succes')
 
