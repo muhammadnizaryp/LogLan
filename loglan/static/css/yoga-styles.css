@@ -205,9 +205,9 @@ p a{
   border-color: #46C9B6;
   border-radius: 0;
   color: white;
-  font-size: 20px;
+  font-size: 17px;
   width: 100%;
-  height: 100px;
+  height: 90px;
   margin-bottom: 10px;
 }
 
@@ -484,18 +484,17 @@ p a{
 }
 
 .yoga-panel-soal-kuis{
-  height: 100px;
+  height: 80px;
   color: white;
-  margin-top: 50px;
-  margin-bottom: 35px;
-
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 .yoga-panel-pilihan-kuis{
   height: 513px;
   padding:20px;
   margin-top: -40px;
-  margin-bottom: 10px;
+  margin-bottom: -60px;
 }
 
 .yoga-pilihan-ganda{
@@ -505,13 +504,20 @@ p a{
 
 .yoga-background-kuis{
   background-color: #354551;
-  min-height: 783px;
+  min-height: 645px;
   margin-top: -20px;
 }
 
 .yoga-background-akun{
   background-color: #354551;
-  min-height: 783px;
+  min-height: 501px;
+  margin-top: -20px;
+  width: 100%;
+}
+
+.yoga-background-akun1{
+  background-color: #354551;
+  min-height: 730px;
   margin-top: -20px;
   width: 100%;
 }
@@ -544,7 +550,7 @@ p a{
   background-color: #354551;
   margin-top: -20px;
   width: 100%;
-  min-height: 783px;
+  min-height: 501px;
 }
 
 .yoga-background-tentang{
@@ -632,12 +638,12 @@ p a{
 
 .yoga-text-akun{
   color: white;
-  font-size: 23px;
-  margin-top: 365px;
+  font-size: 17px;
+  margin-top: 200px;
 }
 
 .yoga-text-selesai-materi{
-  margin-top: 120px;
+  margin-top: 75px;
   font-size: 24px;
   color: white;
 }
@@ -645,7 +651,7 @@ p a{
 .yoga-hasil-jumlah-materi{
   font-size: 24px;
   color: #46C9B6;
-  margin-top: 100px;
+  margin-top: 30px;
   margin-bottom: 30px;
 }
 
@@ -653,5 +659,5 @@ p a{
   font-size: 24px;
   color: #22A7F0;
   margin-top: 30px;
-  margin-bottom: 120px;
+  margin-bottom: 40px;
 }

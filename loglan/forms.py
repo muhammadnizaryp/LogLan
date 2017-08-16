@@ -49,11 +49,10 @@ class EmailConfirmationForm(PasswordResetForm):
         Send a django.core.mail.EmailMultiAlternatives to `to_email`.
         """
         subject = loader.render_to_string(subject_template_name, context)
-        # Email subject *must not* contain newlines
+
         subject = ''.join(subject.splitlines())
         body = loader.render_to_string(email_template_name, context)
 
-        # diganti pake send gmail
         for to in [to_email]:
             if html_email_template_name is not None:
                 body = loader.render_to_string(html_email_template_name, context)
@@ -65,13 +64,13 @@ class SetPasswordForm(SetPasswordForm):
         'password_mismatch': _("The two password fields didn't match."),
     }
     new_password1 = forms.CharField(
-        label=_("Password Baru"),
-        widget=forms.PasswordInput,
+        label='Kata Sandi Baru',
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Kata Sandi Baru'}),
         strip=False,
         help_text=password_validation.password_validators_help_text_html(),
     )
     new_password2 = forms.CharField(
-        label=_("Konfirmasi Password Baru"),
+        label='Konfirmasi Kata Sandi Baru',
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Konfirmasi Kata Sandi Baru'}),
         strip=False,
-        widget=forms.PasswordInput,
 )

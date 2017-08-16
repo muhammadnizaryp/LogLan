@@ -5,7 +5,7 @@
 
   <div class="row">
     <div class="col-md-12 yoga-panel-soal-kuis text-center">
-      <p class="text-center" style="font-size:25px; ">{{ quiz_part.quiz_content}}</p>
+      <p class="text-center" style="font-size:20px; ">{{ quiz_part.quiz_content}}</p>
     </div>
   </div>
 
@@ -14,9 +14,9 @@
   <div class="row yoga-panel-pilihan-kuis">
     <div class="row yoga-pilihan-ganda">
 
-      <div class="col-md-3"></div>
+      <div class="col-md-2"></div>
 
-      <div class="col-md-6">
+      <div class="col-md-8">
         {% for answer in quiz_part.quiz_part_answers.all %}
         <div id="yoga-pilihan">
           <label type="button" class="btn btn-default yoga-button-pilihan-ganda" id="yoga-pilihan-ganda">
@@ -28,7 +28,7 @@
         {% endfor %}
       </div>
 
-      <div class="col-md-3"></div>
+      <div class="col-md-2"></div>
 
     </div>
   </div>
