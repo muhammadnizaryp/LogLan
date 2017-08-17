@@ -78,7 +78,7 @@ function cek_jawaban() {
 
 
 
-<div class="container-fluid yoga-minimal-tinggi-halaman">
+<div class="container-fluid yoga-minimal-tinggi-halaman-belajar">
 
   <div class="row yoga-background-biru-tua" id="yoga-row-pertama-course" >
     <div class="col-md-6" id="yoga-jarak-menu-course">
@@ -98,7 +98,7 @@ function cek_jawaban() {
           <h4 style="font-size:24px;"> {% user_course_point_per_level request.user course_part.course.id %} poin</h4>
         </div>
         <div class="col-md-6">
-          <h4 style="font-size:24px;">+ {{course_part.course_point}} poin</h4>
+          <h4 style="font-size:21px;">+ {{course_part.course_point}} poin</h4>
         </div>
       </div>
     </div>
@@ -124,7 +124,7 @@ function cek_jawaban() {
     </div>
     <div class="col-md-6">
       <div id="yoga-panel-teks-editor">
-        <textarea cols="70" rows="12" id="yourcode"></textarea>
+        <textarea cols="70" rows="7" id="yourcode"></textarea>
         <button type="button" onclick="runit()" class="btn btn-default" id="yoga-button-jalankan">Jalankan</button>
       </div>
       <div class="yoga-output-program" id="output"></div>
