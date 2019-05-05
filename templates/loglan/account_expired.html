@@ -2,9 +2,15 @@
 
 {% block content %}
 
-<div class="container-fluid yoga-background-akun">
-  <div class="text-center yoga-text-akun">
-    <h2>Konfirmasi akun Log-Lan Anda gagal karena konfirmasi yang Anda lakukan sudah melampaui batas waktu yang telah ditentukan. Silahkan <a href="{% url 'loglan:signup' %}">daftar</a> akun Log-Lan kembali.</h2>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12"></div>
+    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12" style="margin-top:50px;">
+      <div class="text-center yoga-text-akun" style="padding:10px;">
+        <p>Konfirmasi akun Log-Lan Anda gagal karena konfirmasi yang Anda lakukan sudah melampaui batas waktu yang telah ditentukan. Silahkan <a href="{% url 'loglan:signup' %}">daftar</a> akun Log-Lan kembali.</p>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12"></div>
   </div>
 </div>
 

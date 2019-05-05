@@ -49,19 +49,28 @@ def signup_view(request):
 
             host=request.META['HTTP_HOST']
             email_subject = 'Account confirmation'
-            email_body = "Hai {}, Terimakasih sudah mendaftar.\
-            Selamat datang di LogLan, web aplikasi e-learning berbasis gamification untuk belajar bahasa pemrograman Python.\
-            Aplikasi ini dibuat untuk tujuan penelitian.\
-            Untuk aktifasi akun, silahkan kunjungi link dibawah dalam waktu kurang dari 48 jam.\
-            http://{}/account/confirmation/{}".format(username, host, activation_key)
+            email_body = """Hai {}, Terimakasih sudah mendaftar.
+
+Selamat datang di LogLan, web aplikasi e-learning berbasis metode gamification untuk belajar bahasa pemrograman Python yang menyenangkan dan menantang. Aplikasi ini dibuat untuk tujuan penelitian.
+
+Untuk aktifasi akun, silahkan kunjungi tautan dibawah ini dalam jangka waktu kurang dari 48 jam.
+
+http://{}/account/confirmation/{}
+
+Jika mengklik tautan di atas tidak berhasil, silakan salin dan tempel URL di jendela browser baru.
+
+
+Hormat Saya,
+Muhammad Nizar Yoga Pratama""".format(username, host, activation_key)
 
             from_email = settings.EMAIL_HOST_USER
             to_email = [user.email, settings.EMAIL_HOST_USER]
 
-            # send_mail(email_subject, email_body, from_email, to_email, fail_silently=False)
-            send_mail_gmail(email_subject, email_body, from_email, user.email)
+            send_mail(email_subject, email_body, from_email, to_email, fail_silently=False)
+            # send_mail_gmail(email_subject, email_body, from_email, user.email)
 
-            return HttpResponseRedirect('/sign-up/succes')
+            # return HttpResponseRedirect('/sign-up/succes')
+            return render_to_response('loglan/signup_succes.html')
 
     else:
         form = SignupForm()
@@ -70,24 +79,24 @@ def signup_view(request):
 
 def account_confirmation_view(request, activation_key):
     if request.user.is_authenticated():
-        return HttpResponseRedirect('/user_main_page.html')
+        return HttpResponseRedirect('/user-main-page')
 
     user_activation = get_object_or_404(UserActivationKey, activation_key=activation_key)
     if user_activation.key_expires < timezone.now():
-        return render_to_response('/account_expired.html')
+        return render_to_response('loglan/account_expired.html')
     user = user_activation.user
     user.is_active = True
     user.save()
     return render_to_response('loglan/account_confirmed.html')
 
-def account_confirmed_view():
-    return render(request, "loglan/account_confirmed.html")
-
-def account_expired_view():
-    return render(request, "loglan/account_expired.html")
-
-def signup_succes_view(request):
-    return render(request, "loglan/signup_succes.html")
+# def account_confirmed_view():
+#     return render(request, "loglan/account_confirmed.html")
+#
+# def account_expired_view():
+#     return render(request, "loglan/account_expired.html")
+#
+# def signup_succes_view(request):
+#     return render(request, "loglan/signup_succes.html")
 
 @login_required
 def logout_view(request):

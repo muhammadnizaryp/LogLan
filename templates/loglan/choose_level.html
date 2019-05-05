@@ -4,25 +4,25 @@
 
 {% block content %}
 
-<div class="container yoga-minimal-tinggi-halaman">
+<div class="container-fluid" style="padding-right:50px; padding-left: 50px;">
 
   {% for course in courses %}
   <div class="row" id="yoga-margin-panel-pilih-level">
-    <div class="col-md-2"></div>
+    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
 
 
-    <div class="col-md-8 col-sm-8 col-xs-12 yoga-panel-level-python">
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 yoga-panel-level-python">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
           <h3 class=yoga-panel-title>{{ course.course_name }}</h3>
         </div>
-        <div class="col-md-8 text-left yoga-panel-level-python-abu-abu">
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 text-left yoga-panel-level-python-abu-abu">
           {{course.course_description}}
         </div>
       </div>
 
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" style="padding:0.5px;">
           <form method="POST" action="#">
             {% last_taken_part request.user course as last_part %}
             {% if last_part %}
@@ -32,7 +32,7 @@
             {% endif %}
           </form>
         </div>
-        <div class="col-md-6">
+        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" style="padding:0.5px;">
           <form method="POST" action="#">
             {% with course.quiz.quiz_parts.all|first as first_part %}
             <a href="{% url 'loglan:quiz_part_detail' course_slug=course.course_slug number_part_quiz=first_part.number %}"
@@ -43,7 +43,7 @@
       </div>
     </div>
 
-    <div class="col-md-2"></div>
+    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
 
   </div>
   {% endfor %}

@@ -4,82 +4,92 @@
 
 {% block content %}
 
-<div class="container-fluid yoga-background-list-materi">
+<div class="container-fluid">
 
-  <div class="row">
-    <div class="col-md-6" id="yoga-jarak-menu-course">
-      <div class="col-md-4">
-        {% last_taken_part request.user course as last_part %}
-        <a href="{% url 'loglan:course_part_detail' course_slug=course.course_slug number_part_course=last_part.number %}" class="btn btn-default" id="yoga-button-belajar"> Belajar</a>
+  <div class="row" id="yoga-row-pertama-course">
+    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" style="padding:0px;">
+      <div class="row">
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12" style="padding:5px;">
+          {% last_taken_part request.user course as last_part %}
+          <a href="{% url 'loglan:course_part_detail' course_slug=course.course_slug number_part_course=last_part.number %}" class="btn btn-default" id="yoga-button-belajar"> Belajar</a>
+        </div>
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12" style="padding:5px;">
+          <a href="{% url 'loglan:course_part_list' course_slug=course.course_slug %}" class="btn btn-default" id="yoga-button-belajar"> Daftar Materi</a>
+        </div>
+        <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12"></div>
+        <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12"></div>
       </div>
-      <div class="col-md-4">
-        <a href="{% url 'loglan:course_part_list' course_slug=course.course_slug %}" class="btn btn-default" id="yoga-button-belajar"> Daftar Materi</a>
-      </div>
-      <div class="col-md-2"></div>
-      <div class="col-md-2"></div>
     </div>
+    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12"></div>
   </div>
 
-  <div class="row">
-    <div class="col-md-2"></div>
+  <div class="row" style="margin-bottom:50px;">
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
 
-    <div class="col-md-8 text-center">
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 
-        <div class="row" id="yoga-row-pertama-peringkat">
-          <h2 id="yoga-judul-peringkat">Daftar Materi Python {{course.course_name}}</h2>
+      <div class="row text-center" id="yoga-row-pertama-peringkat">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin;auto;">
+          <h3 id="yoga-judul-peringkat">Daftar Materi Python {{course.course_name}}</h3>
         </div>
+      </div>
 
-        <div class="row" id="yoga-tabel-peringkat">
-          <div class="row">
-            <div class="col-md-2">
-              Nomor
-            </div>
-            <div class="col-md-4" class="text-left">
-              Materi
-            </div>
-            <div class="col-md-4">
-              Poin
-            </div>
-            <div class="col-md-2">
-              Status
-            </div>
-          </div>
-          <div class="row">
-            <hr id="yoga-border-peringkat"></hr>
-          </div>
+      <div class="row" id="yoga-tabel-peringkat">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center" style="font-weight:bold; color:#00D3B5; font-size:18px;">
+          Nomor
         </div>
-
-        {% for course_part in course.course_parts.all %}
-        <div class="row">
-          <div class="row">
-            <div class="col-md-2">
-              {{ course_part.number }}
-            </div>
-            <div class="col-md-4" class="text-left">
-              <a href="{% url 'loglan:course_part_detail' course_slug=course_part.course.course_slug number_part_course=course_part.number %}"
-                class="{% part_lock request.user course_part %}">
-                <div class="row">
-                  <div class="col-md-3 text-right"><i class="fa fa-play-circle"></i></div>
-                  <div class="col-md-9 text-left">{{ course_part.course_part_name }}</div>
-                </div>
-              </a>
-            </div>
-            <div class="col-md-4">
-              + {{ course_part.course_point }}
-            </div>
-            <div class="col-md-2 symbol-{% part_lock request.user course_part %}">
-              <i class="fa"></i>
-            </div>
-          </div>
-          <div class="row">
-            <hr id="yoga-border-peringkat"></hr>
-          </div>
+        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 text-center" style="font-weight:bold; color:#00D3B5; font-size:18px;">
+          Materi
         </div>
-        {% endfor %}
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center" style="font-weight:bold; color:#00D3B5; font-size:18px;">
+          Poin
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center" style="font-weight:bold; color:#00D3B5; font-size:18px;">
+          Status
+        </div>
+      </div>
 
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <hr id="yoga-border-peringkat"></hr>
+        </div>
+      </div>
+
+      {% for course_part in course.course_parts.all %}
+      <div class="row">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center" style="color:#00D3B5;">
+          {{ course_part.number }}
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 text-left" style="color:white;">
+          <a href="{% url 'loglan:course_part_detail' course_slug=course_part.course.course_slug number_part_course=course_part.number %}"
+            class="{% part_lock request.user course_part %}">
+            <div class="row">
+              <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+              <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center"><i class="fa fa-play-circle"></i></div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center"><div class="text-left">{{ course_part.course_part_name }}</div></div>
+              <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center" style="color:white;">
+          + {{ course_part.course_point }}
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 symbol-{% part_lock request.user course_part %} text-center" style="color:white;">
+          <i class="fa"></i>
+        </div>
+      </div>
+
+      <br>
+
+      <!-- <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <hr id="yoga-border-peringkat"></hr>
+        </div>
+      </div> -->
+      {% endfor %}
     </div>
 
-    <div class="col-md-2"></div>
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
   </div>
 </div>
 

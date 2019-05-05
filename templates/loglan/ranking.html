@@ -11,53 +11,66 @@
 </script>
 
 <div class="container-fluid yoga-background-rangking">
-  <div class="col-md-2"></div>
+  <div class="row">
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
 
-  <div class="col-md-8">
-    <div class="text-center">
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
       <div class="row" id="yoga-row-pertama-peringkat">
-        <h2 id="yoga-judul-peringkat">Peringkat User</h2>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+          <h3 id="yoga-judul-peringkat">Peringkat User</h3>
+        </div>
       </div>
 
       <div class="row" id="yoga-tabel-peringkat">
-        <div class="row">
-          <div class="col-md-2">
-            Peringkat
-          </div>
-          <div class="col-md-6">
-            Username
-          </div>
-          <div class-"col-md-4">
-            Jumlah Poin
-          </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center" style="font-weight:bold; color:#00D3B5; font-size:18px;">
+          Peringkat
         </div>
-        <div class="row">
-          <hr id="yoga-border-peringkat"></hr>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center" style="font-weight:bold; color:#00D3B5; font-size:18px;">
+          Username
         </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center" style="font-weight:bold; color:#00D3B5; font-size:18px;">
+          Jumlah Poin
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
       </div>
 
       <div class="row">
-        {% for user_profile in user_rankings %}
-        <div class="row">
-          <div class="col-md-2">
-            {{ user_profile.user_ranking }}
-          </div>
-          <div class="col-md-6">
-            {{user_profile.user.username}}
-          </div>
-          <div class-"col-md-4">
-            <h6>{{ user_profile.user_point_total }} poin</h6>
-          </div>
-        </div>
-        <div class="row">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
           <hr id="yoga-border-peringkat"></hr>
         </div>
-        {% endfor %}
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
       </div>
+
+      {% for user_profile in user_rankings %}
+      <div class="row">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center" style="color:#00D3B5">
+          {{ user_profile.user_ranking }}
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center">
+          {{user_profile.user.username}}
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center">
+          {{ user_profile.user_point_total }} poin
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+      </div>
+
+      <br>
+
+      <!-- <div class="row">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+          <hr id="yoga-border-peringkat"></hr>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+      </div> -->
+      {% endfor %}
     </div>
 
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
   </div>
-
-  <div class="col-md-2"></div>
 </div>
 {% endblock %}

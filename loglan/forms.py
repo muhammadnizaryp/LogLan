@@ -7,7 +7,7 @@ from django.core.exceptions import ValidationError
 from .gmail import send_mail_gmail
 from django.template import loader
 from django.utils.translation import gettext, gettext_lazy as _
-
+from django.core.mail import send_mail
 
 
 class SignupForm(UserCreationForm):
@@ -27,7 +27,6 @@ class SignupForm(UserCreationForm):
         if User.objects.filter(email=email).exists():
             raise ValidationError("Email yang anda masukan sudah terdaftar")
         return email
-
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(label='Email', widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'email'}))
@@ -56,8 +55,8 @@ class EmailConfirmationForm(PasswordResetForm):
         for to in [to_email]:
             if html_email_template_name is not None:
                 body = loader.render_to_string(html_email_template_name, context)
-            send_mail_gmail(subject, body, from_email, to)
-
+            # send_mail_gmail(subject, body, from_email, to)
+            send_mail(subject, body, from_email, [to])
 
 class SetPasswordForm(SetPasswordForm):
     error_messages = {
@@ -73,4 +72,4 @@ class SetPasswordForm(SetPasswordForm):
         label='Konfirmasi Kata Sandi Baru',
         widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Konfirmasi Kata Sandi Baru'}),
         strip=False,
-)
+    )

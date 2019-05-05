@@ -4,82 +4,66 @@
 
 {% block content %}
 
-<div class="container-fluid yoga-background-rangking">
+<div class="container-fluid yoga-background-rangking" style="padding-top:25px; padding-bottom:25px; padding-right:50px; padding-left: 50px;">
 
 
   <div class="row yoga-row-pertama-hasil-kuis">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-      <div class="col-md-4 text-center">
-        <div class="yoga-kuis-benar">
-          <div class="row">
-            Benar
-          </div>
-          <div class="row">
-            {{ quiz_taken.quiz_part_is_true.count }}
+    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center">
+          <div class="yoga-kuis-benar">
+            <h2>Benar</h2>
+            <h2>{{ quiz_taken.quiz_part_is_true.count }}</h2>
           </div>
         </div>
-      </div>
-      <div class="col-md-4 text-center">
-        <div class="yoga-kuis-salah">
-          <div class="row">
-            Salah
-          </div>
-          <div class="row">
-            {{ quiz_taken.quiz_part_is_false.count }}
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center">
+          <div class="yoga-kuis-salah">
+            <h2>Salah</h2>
+            <h2>{{ quiz_taken.quiz_part_is_false.count }}</h2>
           </div>
         </div>
-      </div>
-      <div class="col-md-4 text-center">
-        <div class="yoga-jumlah-kuis">
-          <div class="row">
-            Jumlah Soal
-          </div>
-          <div class="row">
-            {{ quiz_taken.quiz_part_is_completed.count }}
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center">
+          <div class="yoga-jumlah-kuis">
+            <h2>Jumlah Soal</h2>
+            <h2>{{ quiz_taken.quiz_part_is_completed.count }}</h2>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-2"></div>
+    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
   </div>
 
   <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
+    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
       <hr id="yoga-border-hasil-kuis"></hr>
     </div>
-    <div class="col-md-2"></div>
+    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
   </div>
 
   <div class="row yoga-row-kedua-hasil-kuis">
-    <div class="col-md-4"></div>
-    <div class="col-md-4 text-center">
-      <div class="row">
-        Anda Mendapat Poin
-      </div>
-      <div class="row">
-        {% user_quiz_point_per_level request.user quiz_taken.quiz.id %} / {% user_quiz_point_should_be_achieved request.user quiz_taken.quiz.id %}
-      </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"></div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center">
+      <h2>Anda Mendapat Poin</h2>
+      <h2>{% user_quiz_point_per_level request.user quiz_taken.quiz.id %} / {% user_quiz_point_should_be_achieved request.user quiz_taken.quiz.id %}</h2>
     </div>
-    <div class="col-md-4"></div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"></div>
   </div>
 
   <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-      <div class="col-md-1"></div>
-      <div class="col-md-10">
-        <div class="col-md-6 text-center">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"></div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center" style="padding:0.5px;">
           <a href="{% url 'loglan:quiz_part_retake' quiz_taken.quiz.course.course_slug %}" class="btn btn-default" id="yoga-button-belajar">Coba Kuis Kembali</a>
         </div>
-        <div class="col-md-6 text-center">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center" style="padding:0.5px;">
           <a href="{% url 'loglan:choose_level' %}" class="btn btn-default" id="yoga-button-belajar">Pilih Level Belajar</a>
         </div>
       </div>
-      <div class="col-md-1"></div>
     </div>
-    <div class="col-md-3"></div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"></div>
   </div>
 
 </div>

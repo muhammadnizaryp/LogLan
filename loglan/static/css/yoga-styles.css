@@ -4,16 +4,9 @@ body{
 
 .yoga-background-biru-tua{
   background-color: #152B39;
-  height: 50px;
+  height: 100%;
 }
 
-.yoga-minimal-tinggi-halaman{
-  min-height: 763px;
-}
-
-.yoga-minimal-tinggi-halaman-belajar{
-  min-height: 603px;
-}
 p a{
   color: #008080;
 }
@@ -30,31 +23,18 @@ p a{
   color: #435560;
 }
 
-.yoga-text-white{
-  color:white;
-}
-
-#yoga-menu-navbar-kanan{
+#yoga-button-header{
   color: white;
-  font-size: 16px;
-  padding-right: 20px;
+  font-size: 20px;
+  padding: 3px;
 }
 
-#yoga-menu-navbar-kanan:hover,
-#yoga-menu-navbar-kanan:focus,
-#yoga-menu-navbar-kanan:active{
-  text-decoration: none;
-  color: #435560;
-}
-
-#yoga-menu-course:first-child{
-  margin-right: 10px;
-}
-
-#yoga-userpoint{
-  color: yellow;
-  font-size: 14px;
-  text-decoration: none;
+#yoga-button-header:hover,
+#yoga-button-header:focus,
+#yoga-button-header:active{
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
 }
 
 .yoga-panel-title{
@@ -63,57 +43,23 @@ p a{
   font-weight: 600;
 }
 
-
-#yoga-logo{
-  position: relative;
-  top: -5px;
-}
-
 #yoga-logo-selamat-datang{
   margin-top: 40px;
 }
 
-#yoga-col-selamat-datang{
-  margin-top: 155px;
-}
-
 #yoga-teks-selamat-datang{
-  font-size: 44px;
-  margin-left: 60px;
+  font-size: 28px;
   color: white;
 }
 
 #yoga-teks-loglan{
-  font-size: 44px;
-  margin-left: 60px;
+  font-size: 28px;
   color: #008080;
 }
 
 #yoga-teks-penjelasan-loglan{
   color: #E9EAEA;
   font-size: 19px;
-  margin-top: 40px;
-}
-
-#yoga-navbar-atas{
-  background-color: #008080;
-  border-radius: 0;
-}
-
-.yoga-button-transparent{
-  background-color: transparent;
-  border-color: white;
-  color: white;
-  margin-top: 8px;
-  border-radius: 0;
-}
-
-.yoga-button-transparent-hijau{
-  background-color: transparent;
-  border-color: #008080;
-  color: #008080;
-  margin-top: 8px;
-  border-radius: 0;
 }
 
 #yoga-button-jalankan{
@@ -173,9 +119,8 @@ p a{
   border-radius: 0;
   color: white;
   font-size: 20px;
-  width: 379px;
+  width: 100%;
   height: 100%;
-  margin-left: -15px;
 }
 
 #yoga-button-materi:hover,
@@ -191,9 +136,8 @@ p a{
   border-radius: 0;
   color: white;
   font-size: 20px;
-  width: 379px;
+  width: 100%;
   height: 100%;
-  margin-left: -14px;
 }
 
 #yoga-button-kuis:hover,
@@ -233,46 +177,16 @@ p a{
   margin-bottom: 10px;
 }
 
-#yoga-title{
-  position: absolute;
-  top: 14px;
-  color: white;
-  font-size: 24px;
-  font-weight: 600;
-  left: 53px;
-}
-
-.footer{
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  height: 120px;
-  background-color: #008080;
-}
-
-.yoga-footer-konten{
-  color: white;
-  margin-top: 17px;
-}
-
-#yoga-panel-tentang-daftar-biru-tua{
-  background-color: #354551;
-  width: 100%;
-  height: 420px;
-  margin-top: 150px;
-}
-
 #yoga-panel-selamat-datang-biru-tua{
   background-color: #354551;
   width: 100%;
-  height: 350px;
+  height: 100%;
 }
 
 #yoga-panel-selamat-datang-abu-abu{
   background-color: #435560;
   width: 100%;
-  height: 220px;
-  margin-top: 0px;
+  height: 100%;
   padding: 25px;
   color: white;
   font-size: 24px;
@@ -281,9 +195,6 @@ p a{
 
 #yoga-margin-panel-pilih-level{
   margin: 100px 0;
-}
-#yoga-caraousel{
-  margin-top: 100px;
 }
 
 .yoga-panel-python-halaman-user{
@@ -306,6 +217,7 @@ p a{
     border-radius: 0%;
     opacity: 0.7;
     filter: alpha(opacity=50);
+    padding: 25px;
 }
 
 .yoga-panel-mulai-belajar-abu-abu{
@@ -315,7 +227,7 @@ p a{
 
 .yoga-panel-level-python-abu-abu{
   background-color: #E9EAEA;
-  height: 128px;
+  height: 100%;
   font-size: 18px;
   padding: 10px;
   color: #435560;;
@@ -329,78 +241,45 @@ p a{
 
 .yoga-panel-biru-progres-bar-halaman-user{
   background-color: #435560;
-  height: 250px;
-  padding: 0 20px;
-}
-
-.yoga-panel-biru-profil-halaman-user{
-  background-color: #435560;
-  color: #46C9B6;
-  font-size: 24px;
-  height: 70px;
-}
-
-.yoga-isi-profil-halaman-user{
-  margin: 10px 0;
-}
-
-.yoga-judul-profil-halaman-user{
-  margin: 5px 0;
+  padding: 20px 20px;
 }
 
 .yoga-panel-toska-profil-halaman-user{
-  background-color: #46C9B6;
-  color: #435560;
-  font-size: 24px;
-  height: 50px;
-}
-.yoga-panel-toska-progres-bar-halaman-user{
-  background-color: #46C9B6;
-  height: 50px;
-  padding: 0 20px;
-  margin: 20px 10px;
+  font-size: 16px;
 }
 
-.yoga-progres-bar-halaman-user{
-  margin: 15px 0;
+.yoga-panel-toska-progres-bar-halaman-user{
+  background-color: #46C9B6;
+  padding: 10px 10px;
+  margin: 15px 10px;
 }
 
 .yoga-judul-level-progres-bar{
   color: white;
-  font-size: 25px;
+  font-size: 18px;
   margin: 10px 0;
+  font-weight: bold;
 }
 
 .yoga-isi-progres{
-  color: white;
+  color: #425661;
   font-size: 15px;
-  margin: 14px 0;
+  margin: auto ;
+  font-weight: bold;
 }
 
 .yoga-panel form input{
   border-radius: 0;
 }
 
-#yoga-lupa-kata-sandi{
-  color: white;
-}
-
 #yoga-row-pertama-course{
-  margin-top: -20px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 #yoga-progres-course-detail{
   margin-top: 20px;
-}
-
-#yoga-jarak-menu-course{
-  padding-top: 10px;
-  margin-left: -16px;
-  margin-top: 14px;
-}
-
-#yoga-margin-button-sebelumnya{
-  margin-left: 25px;
 }
 
 .yoga-notifikasi-hasil-program{
@@ -425,11 +304,11 @@ p a{
 }
 
 #yoga-judul-peringkat{
-  margin-top: -5px;
+  color: white;
 }
 
 #yoga-border-peringkat{
-  border-color: rgb(34, 167, 240);
+  border-color: #00D3B5;
 }
 
 #yoga-tabel-peringkat{
@@ -440,11 +319,6 @@ p a{
   border-color: #46C9B6;
 }
 
-#yoga-padding-tentang-daftar{
-  padding: 150px;
-  color: #EBEBEB;
-}
-
 .yoga-penjelasan-python{
   color: #435560;
 }
@@ -453,12 +327,13 @@ p a{
   overflow-y:scroll;
   height: 423px;
   background-color: white;
-  padding: 10px 10px;
+  padding: 50px;
 }
 
 #yoga-panel-button-belajar{
-  background-color: #354551;
-  height: 70px;
+  background-color: #35455;
+  height: 100%;
+  padding: 30px 20px;
 }
 
 #yoga-margin-panel-button-selanjutnya-sebelumnya{
@@ -466,38 +341,34 @@ p a{
 }
 
 #yoga-panel-teks-editor{
-  height: 243px;
   background-color: #354551;
-  padding: 12px 12px;
+  padding: 12px;
 }
 
-.yoga-no-gutter > [class*='col-'] {
+.yoga-no-gutter > [class*='col-']{
     padding-right:0;
     padding-left:0;
 }
 
 #yoga-background-course{
   background-color: #152B39;
-  padding-top: 30px;
+  padding: 15px 0px;
 }
 
 .yoga-poin-course-detail{
   color: #46C9B6;
-  margin-top: 20px;
 }
 
 .yoga-panel-soal-kuis{
-  height: 80px;
+  min-height: 100%;
   color: white;
-  margin-top: 30px;
+  margin-top: 70px;
   margin-bottom: 20px;
 }
 
 .yoga-panel-pilihan-kuis{
-  height: 513px;
-  padding:20px;
-  margin-top: -40px;
-  margin-bottom: -60px;
+  height: 100%;
+  padding:10px 20px;
 }
 
 .yoga-pilihan-ganda{
@@ -511,66 +382,23 @@ p a{
   margin-top: -20px;
 }
 
-.yoga-background-akun{
-  background-color: #354551;
-  min-height: 501px;
-  margin-top: -20px;
-  width: 100%;
-}
-
-.yoga-background-akun1{
-  background-color: #354551;
-  min-height: 730px;
-  margin-top: -20px;
-  width: 100%;
-}
-
-.yoga-background-bantuan{
-  background-color: #354551;
-  width: 100%;
-  min-height: 783px;
-  margin-top: -20px;
-  color: white;
-}
-
 .yoga-background-rangking{
-  background-color: #354551;
-  width: 100%;
-  min-height: 783px;
-  margin-top: -20px;
-  color: white;
-}
-
-.yoga-background-list-materi{
-  background-color: #354551;
-  margin-top: -20px;
-  width: 100%;
-  min-height: 783px;
   color: white;
 }
 
 .yoga-background-hasil-belajar{
-  background-color: #354551;
-  margin-top: -20px;
   width: 100%;
-  min-height: 501px;
-}
-
-.yoga-background-tentang{
-  background-color: #354551;
-  margin-top: -20px;
-  width: 100%;
-  min-height: 783px;
+  height: 100%;
 }
 
 .yoga-background-profil-pengembang{
   background-color: white;
-  height: 250px;
+  min-height: 100%;
 }
 
 .yoga-background-tentang-aplikasi{
   background-color: white;
-  height: 275px;
+  min-height: 100%;
 }
 
 .yoga-judul-profil-pengembang{
@@ -587,10 +415,7 @@ p a{
 
 #yoga-jumlah-poin-course-user{
   height: 100%;
-  background-color: #74ECFC;
-  border-color: #74ECFC;
-  color: #152B39;
-  border-radius: 1%;
+  color: #74ECFC;
 }
 
 .yoga-keterangan-masuk{
@@ -613,14 +438,13 @@ p a{
 }
 
 .yoga-row-pertama-hasil-kuis{
-  margin-top: 150px;
   font-size: 50px;
   margin-bottom: 10px;
 }
 
 .yoga-row-kedua-hasil-kuis{
   font-size: 40px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
 .yoga-kuis-benar{
@@ -642,11 +466,9 @@ p a{
 .yoga-text-akun{
   color: white;
   font-size: 17px;
-  margin-top: 200px;
 }
 
 .yoga-text-selesai-materi{
-  margin-top: 120px;
   font-size: 24px;
   color: white;
 }

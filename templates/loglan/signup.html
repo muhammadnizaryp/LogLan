@@ -6,12 +6,12 @@
     window.location = "{% url 'loglan:user_main_page' %}";
   {% endif %}
 </script>
-<div class="container yoga-background-akun1">
+<div class="container-fluid" style="padding-top:25px; padding-bottom: 25px;">
   <div class="row">
 
-    <div class="col-md-4"></div>
+    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12"></div>
 
-    <div class="col-md-4 col-sm-4 col-xs-12">
+    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
       <div style="margin-top:50px;">
         <div class="text-center">
           <h4 class="yoga-keterangan-masuk">Daftar akun Log-Lan</h4>
@@ -19,19 +19,19 @@
         <div class="panel panel-default yoga-panel">
           <div class="panel-body">
             <form method="POST" action=""> {% csrf_token %}
-              {% for field in form %}
+              <!-- {% for field in form %}
               <div class="fieldWrapper">
                 {{ field.errors }}
               </div>
-              {% endfor %}
-              <div>
-                {% for field in form %}
-                <div style="margin-top: 10px; color:white;">
-                  {{ field.label_tag|escape }}
-                </div>
+              {% endfor %} -->
+
+              {% for field in form %}
+              <div style="padding-top: 20px;  color:white;">
+                {{ field.label_tag|escape }}{{ field.errors|escape }}
                 {{ field }}
-                {% endfor %}
               </div>
+              {% endfor %}
+
               <div class="form-group text-center">
                 <button type="submit" class="btn btn-default" id="yoga-button-akun">Daftar</button>
               </div>
@@ -46,7 +46,7 @@
       </div>
     </div>
 
-    <div class="col-md-4"></div>
+    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12"></div>
 
   </div>
 </div>

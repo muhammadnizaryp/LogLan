@@ -4,7 +4,7 @@
 <div class="container-fluid yoga-background-kuis">
 
   <div class="row">
-    <div class="col-md-12 yoga-panel-soal-kuis text-center">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 yoga-panel-soal-kuis text-center">
       <p class="text-center" style="font-size:20px; ">{{ quiz_part.quiz_content}}</p>
     </div>
   </div>
@@ -12,48 +12,39 @@
   <form  method="POST">{% csrf_token %}
 
   <div class="row yoga-panel-pilihan-kuis">
-    <div class="row yoga-pilihan-ganda">
 
-      <div class="col-md-2"></div>
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
 
-      <div class="col-md-8">
-        {% for answer in quiz_part.quiz_part_answers.all %}
-        <div id="yoga-pilihan">
-          <label type="button" class="btn btn-default yoga-button-pilihan-ganda" id="yoga-pilihan-ganda">
-            <input id="yoga-radio-pilihan-ganda" type="radio" name="ChoiceAnswer" value="{{answer.id}}">
-              {{answer.text_answer}}
-            </input>
-          </label>
-        </div>
-        {% endfor %}
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+      {% for answer in quiz_part.quiz_part_answers.all %}
+      <div id="yoga-pilihan">
+        <label type="button" class="btn btn-default yoga-button-pilihan-ganda" id="yoga-pilihan-ganda">
+          <input id="yoga-radio-pilihan-ganda" type="radio" name="ChoiceAnswer" value="{{answer.id}}">
+            {{answer.text_answer}}
+          </input>
+        </label>
       </div>
-
-      <div class="col-md-2"></div>
-
+      {% endfor %}
     </div>
+
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+
   </div>
 
   <div class="row" id="yoga-panel-button-belajar">
-    <div class="col-md-4"></div>
-    <div class="col-md-4" id="yoga-margin-panel-button-selanjutnya-sebelumnya">
-      <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-          <div class="text-center">
-            <!-- {% if quiz_part.next_quiz %}
-            <a href="{% url 'loglan:quiz_part_detail' course_slug=quiz_part.course_part.course.course_slug number_part_quiz=quiz_part.next_quiz.number %}">
-              Kuis Selanjutnya
-            </a>
-            {% endif %} -->
-            <button type="submit" class="btn btn-default" id="yoga-button-belajar">
-              Pilih Jawaban
-            </button>
-          </div>
-        </div>
-        <div class="col-md-3"></div>
-      </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"></div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center" id="yoga-margin-panel-button-selanjutnya-sebelumnya">
+
+      <!-- {% if quiz_part.next_quiz %}
+      <a href="{% url 'loglan:quiz_part_detail' course_slug=quiz_part.course_part.course.course_slug number_part_quiz=quiz_part.next_quiz.number %}">
+        Kuis Selanjutnya
+      </a>
+      {% endif %} -->
+      <button type="submit" class="btn btn-default" id="yoga-button-belajar">
+        Pilih Jawaban
+      </button>
     </div>
-    <div class="col-md-4"></div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"></div>
   </div>
 
   </form>
